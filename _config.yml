@@ -2,7 +2,7 @@
 title: SANCAIXU
 subtitle: 让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！
 welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
-description: Vno Jekyll is a port of my Ghost theme vno.
+description: Hello，大家好，我叫徐三才，iOS工程师一枚。
 creator: <a href="http://onev.cat">@onevcat</a>
 
 url: "http://vno.onevcat.com"
@@ -25,7 +25,7 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    - {title: Projects, description: My Projects, url: 'https://github.com/sancaixu'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -35,7 +35,7 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: vno-jekyll
+    disqus: sancaixu
     # duoshuo: 
     
 # Social
@@ -43,10 +43,10 @@ social:
     # weibo: onevcat
     github: sancaixu
     # twitter: SANCAIXU
-    gplus: 107108267983477358170
-    mail: sancixu@163.com
+    # gplus: 107108267983477358170
+    mail: sancaixu@163.com
 
 # Google Analytics
 ga:
-    # id: your_ga_id
-    # host: your_host
+    id: UA-81174961-1
+    host: xusancai.com
