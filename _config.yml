@@ -1,6 +1,6 @@
 # Basic
-title: Vno Jekyll
-subtitle: A blog-orientation theme for Jekyll
+title: SANCAIXU
+subtitle: 让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！
 welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
 description: Vno Jekyll is a port of my Ghost theme vno.
 creator: <a href="http://onev.cat">@onevcat</a>
@@ -40,11 +40,11 @@ comment:
     
 # Social
 social:
-    weibo: onevcat
-    github: onevcat
-    twitter: onevcat
+    # weibo: onevcat
+    github: sancaixu
+    # twitter: SANCAIXU
     gplus: 107108267983477358170
-    mail: onev@onevcat.com
+    mail: sancixu@163.com
 
 # Google Analytics
 ga:
