@@ -3,10 +3,10 @@
   <channel>
     <title>SANCAIXU</title>
     <description>Hello，大家好，我叫徐三才，iOS工程师一枚。</description>
-    <link>http://vno.onevcat.com/</link>
-    <atom:link href="http://vno.onevcat.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Jul 2016 22:52:15 +0800</pubDate>
-    <lastBuildDate>Fri, 22 Jul 2016 22:52:15 +0800</lastBuildDate>
+    <link>https://www.xusancai.com/</link>
+    <atom:link href="https://www.xusancai.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 23 Jul 2016 10:52:30 +0800</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 10:52:30 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -58,8 +58,8 @@ $ bundler exec jekyll serve
 &lt;p&gt;Great thanks to &lt;a href=&quot;https://github.com/daleanthony&quot;&gt;Dale Anthony&lt;/a&gt; and his &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Uno&lt;/a&gt;. Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as &lt;a href=&quot;http://creativecommons.org/licenses/by/4.0/&quot;&gt;Creative Commons Attribution 4.0 International&lt;/a&gt;. See the link for more information.&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 Feb 2016 14:32:24 +0800</pubDate>
-        <link>http://vno.onevcat.com/2016/02/hello-world-vno/</link>
-        <guid isPermaLink="true">http://vno.onevcat.com/2016/02/hello-world-vno/</guid>
+        <link>https://www.xusancai.com/2016/02/hello-world-vno/</link>
+        <guid isPermaLink="true">https://www.xusancai.com/2016/02/hello-world-vno/</guid>
         
         
       </item>
@@ -81,8 +81,8 @@ print_hi(&amp;#39;Tom&amp;#39;)
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Mon, 15 Feb 2016 14:32:24 +0800</pubDate>
-        <link>http://vno.onevcat.com/2016/02/sample-post/</link>
-        <guid isPermaLink="true">http://vno.onevcat.com/2016/02/sample-post/</guid>
+        <link>https://www.xusancai.com/2016/02/sample-post/</link>
+        <guid isPermaLink="true">https://www.xusancai.com/2016/02/sample-post/</guid>
         
         
       </item>

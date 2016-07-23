@@ -5,7 +5,9 @@ welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank"
 description: Hello，大家好，我叫徐三才，iOS工程师一枚。
 creator: <a href="http://onev.cat">@onevcat</a>
 
-url: "http://vno.onevcat.com"
+# url: "http://vno.onevcat.com"
+url: "https://www.xusancai.com"
+enforce_ssl: xusancai.com
 
 permalink: /:year/:month/:title/
 
