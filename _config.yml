@@ -1,9 +1,10 @@
 # Basic
-title: SANCAIXU
+title: Three Cai
 subtitle: 让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！
-welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
+# welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
+welcome_message: 
 description: Hello，大家好，我叫徐三才，iOS工程师一枚。
-creator: <a href="http://onev.cat">@onevcat</a>
+creator: <a href="https://www.xusancai.com">@xusancai</a>
 
 # url: "http://vno.onevcat.com"
 url: "https://www.xusancai.com"
