@@ -5,23 +5,21 @@
     <description>Hello，大家好，我叫徐三才，iOS工程师一枚。</description>
     <link>https://www.xusancai.com/</link>
     <atom:link href="https://www.xusancai.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 10:28:34 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 10:28:34 +0800</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 10:36:16 +0800</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 10:36:16 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>Hello Blog</title>
-        <description>&lt;h3&gt;我的第一篇博客&lt;/h3&gt;
-
+        <description>&lt;h3 id=&quot;section&quot;&gt;我的第一篇博客&lt;/h3&gt;
 &lt;p&gt;Long time ago，我就想建立一个自己的博客，但一直没有行动，正如那句话——在本该拼搏的年纪，却想的太多，做的太少！&lt;/p&gt;
 
 &lt;p&gt;直到今年四月份的时候，兴趣一来，就在万网上买了一个域名，并在WordPress上建立了一个博客，但由于在网站方面自己是一个小白，不知道怎么去管理，写了一篇文章之后，就在也没有去管理过，后来一想，还是因为自己懒。&lt;/p&gt;
 
 &lt;p&gt;前几天，无意间看了SamirChen的一篇文章&lt;a href=&quot;http://www.samirchen.com/input-and-output/#rd?sukey=3997c0719f151520c76316c7730911838f118f5d3eb3411cdc9fbafffaf38c38fdd199aadb8ef8821a925e9cfd8d96ef&quot;&gt;输出比输入好100倍&lt;/a&gt;，给我很大的感触，才下定决心开始把自己所学和所想的记录下来，可能写的不是很好，希望大家能够多多指正!&lt;/p&gt;
 
-&lt;h3&gt;感谢&lt;/h3&gt;
-
-&lt;p&gt;作为一个小白，非常感谢&lt;strong&gt;喵神(onevcat)&lt;/strong&gt;共享的&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;主题&lt;/a&gt;。感谢简书作者&lt;strong&gt;一缕殇流化隐半边冰霜&lt;/strong&gt;写的一篇文章&lt;a href=&quot;http://www.jianshu.com/p/9a6bc31d329d&quot;&gt;如何快速给自己构建一个温馨的&amp;quot;家&amp;quot;——用Jekyll搭建静态博客&lt;/a&gt;给我的指导。感谢所有帮助过我的人。&lt;/p&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;感谢&lt;/h3&gt;
+&lt;p&gt;作为一个小白，非常感谢&lt;strong&gt;喵神(onevcat)&lt;/strong&gt;共享的&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;主题&lt;/a&gt;。感谢简书作者&lt;strong&gt;一缕殇流化隐半边冰霜&lt;/strong&gt;写的一篇文章&lt;a href=&quot;http://www.jianshu.com/p/9a6bc31d329d&quot;&gt;如何快速给自己构建一个温馨的”家”——用Jekyll搭建静态博客&lt;/a&gt;给我的指导。感谢所有帮助过我的人。&lt;/p&gt;
 </description>
         <pubDate>Sat, 23 Jul 2016 11:59:24 +0800</pubDate>
         <link>https://www.xusancai.com/2016/07/hello-world/</link>
