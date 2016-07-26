@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>MAC下安装mysql dmg 安装包遇到的问题</title>
+  <meta name="description" content="一、下载安装包">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MAC下安装mysql dmg 安装包遇到的问题">
+  <meta name="twitter:description" content="一、下载安装包">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MAC下安装mysql dmg 安装包遇到的问题">
+  <meta property="og:description" content="一、下载安装包">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://www.xusancai.com/2016/07/MySQL-%E5%AE%89%E8%A3%85/">
+  <link rel="alternate" type="application/rss+xml" title="好歹是个程序猿" href="https://www.xusancai.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 好歹是个程序猿 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="好歹是个程序猿 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 好歹是个程序猿" class="blog-button">好歹是个程序猿</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Hello，大家好，我叫徐三才，iOS工程师一枚。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/sancaixu" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/sancaixu" title="@sancaixu 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:sancaixu@163.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-26 22:09:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-07-26</time> &#8226; <span class="post-meta__tags tags">MySQL</span>
+    </div>
+    <h1 class="post-title">MAC下安装mysql dmg 安装包遇到的问题</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="section">一、下载安装包</h4>
+
+<p><a href="http://dev.mysql.com/downloads/">MySQL下载地址</a></p>
+
+<p>会看到如下图所示的页面，选择MySQL Community Server</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E4%B8%8B%E8%BD%BD%E6%88%AA%E5%9B%BE.png" alt="" /></p>
+
+<p>双击打开下下来的文件在安装完之后会弹出下图这个框，将框里的内容复制下来，粘贴到记事本上面。</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81.png" alt="" /></p>
+
+<p>打开系统偏好设置，会看到作下角会出现一个MySQL的选项。</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9C%8B%E5%88%B0.png" alt="" /></p>
+
+<h4 id="section-1">二、修改配置文件</h4>
+
+<p>1.打开系统偏好设置，点击MySQL进去启动MySQL,如下图</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E5%81%9C%E6%AD%A2mysql.png" alt="" /></p>
+
+<p>2.如果是下图请点击<strong>Start MySQL Server</strong>，变成如上图所示</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E5%90%AF%E5%8A%A8mysql.png" alt="" /></p>
+
+<p>3.打开终端 <code class="highlighter-rouge">cd ~/usr/local/mysql/bin</code> 查看此目录下是否有mysql</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd ~/usr/local/mysql/bin 
+</code></pre>
+</div>
+
+<p>4.在终端输入 <code class="highlighter-rouge">vim ~/.bash_profile</code> 修改mysql的配置文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim ~/.bash_profile
+</code></pre>
+</div>
+
+<p>如下图所示，在文件中加入 <code class="highlighter-rouge">PATH=$PATH:/usr/local/mysql/bin</code> 这代码。
+按<code class="highlighter-rouge">esc</code>然后输入<code class="highlighter-rouge">wq</code>保存并退出。最后在终端输入 <code class="highlighter-rouge">source ~/.bash_profile</code></p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E4%BF%AE%E6%94%B9mysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="" /></p>
+
+<h4 id="section-2">三、修改初始密码</h4>
+
+<p>1.在终端输入 <code class="highlighter-rouge">mysql -uroot -p</code> 如下图所示输入安装完成时你所拷贝在备忘录上的密码<code class="highlighter-rouge">w+-plq!Wp2g;</code> 如果成功终端上回出现 Welcome to the MySQL monitor等等词。</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E7%9A%84bin%E7%9B%AE%E5%BD%95.png" alt="" /></p>
+
+<p><strong>注意后面的<code class="highlighter-rouge">;</code>这个符号也是密码里面的字符</strong>，否则会报下图的错误</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF.png" alt="" /></p>
+
+<p>2.进入mysql设置密码，在网上百度到了这一个方法 注意后面的<strong>;</strong>号</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+mysql&gt; SET PASSWORD FOR 'root'@'localhost' =PASSWORD('你的新密码');
+
+</code></pre>
+</div>
+
+<p>但是运行错误，截图如下</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%811820Error.png" alt="" /></p>
+
+<p>后来谷歌了一下，得到了结果，在终端输入如下几个命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; SET PASSWORD = PASSWORD('你的新密码');
+mysql&gt; ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+mysql&gt; flush privileges
+</code></pre>
+</div>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/%E6%88%90%E5%8A%9F%E6%88%AA%E5%9B%BE.png" alt="" /></p>
+
+<h4 id="mysql">四、卸载MySQL</h4>
+
+<p>在终端输入 以下下命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+cd ~/
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/var/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+vim /etc/hostconfig and removed the line MYSQLCOM=-YES-rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysql.*
+
+</code></pre>
+</div>
+
+<h4 id="section-3">五、参考文档</h4>
+
+<p><a href="http://www.cnblogs.com/yjmyzz/p/4558389.html">mac 下卸载mysql的方法</a>
+<a href="http://www.bubuko.com/infodetail-1231425.html">mac mysql error You must reset your password using ALTER USER statement before executing this statement.</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/hello-world/" title="link to Hello Blog">Hello Blog</a></h2>
+       <p class="excerpt">我的第一篇博客Long time ago，我就想建立一个自己的博客，但一直没有行动，正如那句话——在本该拼搏的年纪，却想的太多，做的太少！直到今年四月份的时候，兴趣一来，就在万网上买了一个域名，并在WordPress上建立了一个博客，但由于在网站方面自己是一个小白，不知道怎么去管理，写了一篇文章之后，就在也没有去管理过，后来一想，还是因为自己懒。前几天，无意间看了SamirChen的一篇文章输出比输入好100倍，给我很大的感触，才下定决心开始把自己所学和所想的记录下来，可能写的不是很好，希...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-23 11:59:24 +0800" class="post-list__meta--date date">2016-07-23</time> &#8226; <span class="post-list__meta--tags tags">开篇</span><a class="btn-border-small" href=/2016/07/hello-world/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://www.xusancai.com/2016/07/MySQL-%E5%AE%89%E8%A3%85/";
+        this.page.identifier = "/2016/07/MySQL-%E5%AE%89%E8%A3%85/";
+    };
+
+    var disqus_shortname = 'sancaixu';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-07-26 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-81174961-1', 'xusancai.com');
+    ga('send', 'pageview');
+</script>
+
+
+    
+  </body>
+
+</html>

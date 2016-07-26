@@ -1,0 +1,136 @@
+---
+layout: post
+title: MAC下安装mysql dmg 安装包遇到的问题
+date: 2016-07-26 23:09:24.000000000 +09:00
+tags: MySQL
+
+---
+
+
+#### 一、下载安装包 
+
+
+[MySQL下载地址](http://dev.mysql.com/downloads/)
+
+会看到如下图所示的页面，选择MySQL Community Server 
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E4%B8%8B%E8%BD%BD%E6%88%AA%E5%9B%BE.png)
+
+
+
+双击打开下下来的文件在安装完之后会弹出下图这个框，将框里的内容复制下来，粘贴到记事本上面。
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81.png)
+
+
+
+打开系统偏好设置，会看到作下角会出现一个MySQL的选项。
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9C%8B%E5%88%B0.png)
+
+
+#### 二、修改配置文件
+
+
+1.打开系统偏好设置，点击MySQL进去启动MySQL,如下图
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E5%81%9C%E6%AD%A2mysql.png)
+
+
+
+
+
+2.如果是下图请点击**Start MySQL Server**，变成如上图所示
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E5%90%AF%E5%8A%A8mysql.png)
+
+
+
+
+
+3.打开终端 `cd ~/usr/local/mysql/bin` 查看此目录下是否有mysql
+
+~~~
+cd ~/usr/local/mysql/bin 
+~~~
+
+
+
+4.在终端输入 `vim ~/.bash_profile` 修改mysql的配置文件
+
+~~~
+vim ~/.bash_profile
+~~~
+
+
+
+如下图所示，在文件中加入 `PATH=$PATH:/usr/local/mysql/bin` 这代码。
+按`esc`然后输入`wq`保存并退出。最后在终端输入 `source ~/.bash_profile`
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E4%BF%AE%E6%94%B9mysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png)
+
+
+
+
+#### 三、修改初始密码
+
+
+1.在终端输入 `mysql -uroot -p` 如下图所示输入安装完成时你所拷贝在备忘录上的密码`w+-plq!Wp2g;` 如果成功终端上回出现 Welcome to the MySQL monitor等等词。
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E7%9A%84bin%E7%9B%AE%E5%BD%95.png)
+
+**注意后面的`;`这个符号也是密码里面的字符**，否则会报下图的错误
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF.png)
+
+
+
+2.进入mysql设置密码，在网上百度到了这一个方法 注意后面的**;**号
+
+~~~
+
+mysql> SET PASSWORD FOR 'root'@'localhost' =PASSWORD('你的新密码');
+
+~~~
+
+但是运行错误，截图如下
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%811820Error.png)
+
+后来谷歌了一下，得到了结果，在终端输入如下几个命令
+
+~~~
+mysql> SET PASSWORD = PASSWORD('你的新密码');
+mysql> ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+mysql> flush privileges
+~~~
+
+![](http://images-10054370.cos.myqcloud.com/MYSQL/%E6%88%90%E5%8A%9F%E6%88%AA%E5%9B%BE.png)
+
+
+
+
+#### 四、卸载MySQL
+
+在终端输入 以下下命令
+
+~~~
+
+cd ~/
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/var/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+vim /etc/hostconfig and removed the line MYSQLCOM=-YES-rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysql.*
+
+~~~
+
+
+#### 五、参考文档
+
+[mac 下卸载mysql的方法](http://www.cnblogs.com/yjmyzz/p/4558389.html)
+[mac mysql error You must reset your password using ALTER USER statement before executing this statement.](http://www.bubuko.com/infodetail-1231425.html)

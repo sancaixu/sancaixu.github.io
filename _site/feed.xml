@@ -5,9 +5,119 @@
     <description>Hello，大家好，我叫徐三才，iOS工程师一枚。</description>
     <link>https://www.xusancai.com/</link>
     <atom:link href="https://www.xusancai.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 12:40:03 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 12:40:03 +0800</lastBuildDate>
+    <pubDate>Tue, 26 Jul 2016 23:14:11 +0800</pubDate>
+    <lastBuildDate>Tue, 26 Jul 2016 23:14:11 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>MAC下安装mysql dmg 安装包遇到的问题</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;一、下载安装包&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dev.mysql.com/downloads/&quot;&gt;MySQL下载地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;会看到如下图所示的页面，选择MySQL Community Server&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E4%B8%8B%E8%BD%BD%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;双击打开下下来的文件在安装完之后会弹出下图这个框，将框里的内容复制下来，粘贴到记事本上面。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;打开系统偏好设置，会看到作下角会出现一个MySQL的选项。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/mysql%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E9%87%8C%E7%9C%8B%E5%88%B0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;二、修改配置文件&lt;/h4&gt;
+
+&lt;p&gt;1.打开系统偏好设置，点击MySQL进去启动MySQL,如下图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E5%81%9C%E6%AD%A2mysql.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.如果是下图请点击&lt;strong&gt;Start MySQL Server&lt;/strong&gt;，变成如上图所示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E5%90%AF%E5%8A%A8mysql.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.打开终端 &lt;code class=&quot;highlighter-rouge&quot;&gt;cd ~/usr/local/mysql/bin&lt;/code&gt; 查看此目录下是否有mysql&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd ~/usr/local/mysql/bin 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;4.在终端输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;vim ~/.bash_profile&lt;/code&gt; 修改mysql的配置文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如下图所示，在文件中加入 &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH=$PATH:/usr/local/mysql/bin&lt;/code&gt; 这代码。
+按&lt;code class=&quot;highlighter-rouge&quot;&gt;esc&lt;/code&gt;然后输入&lt;code class=&quot;highlighter-rouge&quot;&gt;wq&lt;/code&gt;保存并退出。最后在终端输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;source ~/.bash_profile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E4%BF%AE%E6%94%B9mysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;三、修改初始密码&lt;/h4&gt;
+
+&lt;p&gt;1.在终端输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -uroot -p&lt;/code&gt; 如下图所示输入安装完成时你所拷贝在备忘录上的密码&lt;code class=&quot;highlighter-rouge&quot;&gt;w+-plq!Wp2g;&lt;/code&gt; 如果成功终端上回出现 Welcome to the MySQL monitor等等词。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E7%9A%84bin%E7%9B%AE%E5%BD%95.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意后面的&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;这个符号也是密码里面的字符&lt;/strong&gt;，否则会报下图的错误&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E9%94%99%E8%AF%AF.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.进入mysql设置密码，在网上百度到了这一个方法 注意后面的&lt;strong&gt;;&lt;/strong&gt;号&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+mysql&amp;gt; SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; =PASSWORD(&#39;你的新密码&#39;);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;但是运行错误，截图如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%811820Error.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后来谷歌了一下，得到了结果，在终端输入如下几个命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; SET PASSWORD = PASSWORD(&#39;你的新密码&#39;);
+mysql&amp;gt; ALTER USER &#39;root&#39;@&#39;localhost&#39; PASSWORD EXPIRE NEVER;
+mysql&amp;gt; flush privileges
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E6%88%90%E5%8A%9F%E6%88%AA%E5%9B%BE.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;mysql&quot;&gt;四、卸载MySQL&lt;/h4&gt;
+
+&lt;p&gt;在终端输入 以下下命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+cd ~/
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/var/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+vim /etc/hostconfig and removed the line MYSQLCOM=-YES-rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysql.*
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;五、参考文档&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/yjmyzz/p/4558389.html&quot;&gt;mac 下卸载mysql的方法&lt;/a&gt;
+&lt;a href=&quot;http://www.bubuko.com/infodetail-1231425.html&quot;&gt;mac mysql error You must reset your password using ALTER USER statement before executing this statement.&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 26 Jul 2016 22:09:24 +0800</pubDate>
+        <link>https://www.xusancai.com/2016/07/MySQL-%E5%AE%89%E8%A3%85/</link>
+        <guid isPermaLink="true">https://www.xusancai.com/2016/07/MySQL-%E5%AE%89%E8%A3%85/</guid>
+        
+        <category>MySQL</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello Blog</title>
