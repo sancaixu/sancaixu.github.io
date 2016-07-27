@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MAC下安装mysql dmg 安装包遇到的问题
+title: MAC下安装MySQL
 date: 2016-07-26 23:09:24.000000000 +09:00
 tags: MySQL
 

@@ -5,12 +5,12 @@
     <description>Hello，大家好，我叫徐三才，iOS工程师一枚。</description>
     <link>https://www.xusancai.com/</link>
     <atom:link href="https://www.xusancai.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 26 Jul 2016 23:14:11 +0800</pubDate>
-    <lastBuildDate>Tue, 26 Jul 2016 23:14:11 +0800</lastBuildDate>
+    <pubDate>Wed, 27 Jul 2016 09:17:05 +0800</pubDate>
+    <lastBuildDate>Wed, 27 Jul 2016 09:17:05 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>MAC下安装mysql dmg 安装包遇到的问题</title>
+        <title>MAC下安装MySQL</title>
         <description>&lt;h4 id=&quot;section&quot;&gt;一、下载安装包&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://dev.mysql.com/downloads/&quot;&gt;MySQL下载地址&lt;/a&gt;&lt;/p&gt;
