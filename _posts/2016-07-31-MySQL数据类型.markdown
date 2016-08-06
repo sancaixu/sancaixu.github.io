@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL的数据类型
+title: MySQL数据类型
 date: 2016-07-31 09:11:24.000000000 +09:00
 tags: MySQL
 
@@ -8,10 +8,10 @@ tags: MySQL
 
 #### 一、列类型参考
 
-MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。
+MySQL有4种数据类型，分别为[数值型](#mark-数值类型)，[串类型](#mark-text)，[日期和时间类型](#mark-date)，[NULL值](#mark-null)。
 
 
-##### 1.1数值类型
+##### <a name="mark-数值类型"></a> 1.1 数值类型
 
 MySQL支持所有标准SQL数值数据类型。
 
@@ -132,7 +132,7 @@ MySQL支持所有标准SQL数值数据类型。
 缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
 ~~~
 
-##### 2.日期和时间类型
+##### <a name="mark-date"></a> 2.日期和时间类型
 
 表示时间值的日期和时间类型为`DATETIME`、`DATE`、`TIMESTAMP`、`TIME`和`YEAR`。
 
@@ -219,7 +219,7 @@ TIMESTAMP类型有专有的自动更新特性。
 缺省值：当前的日期和时间，注意 DESCRIBE 和 SHOW COLLUMNS 报告缺省值为NULL
 ~~~
 
-##### 3.字符串类型
+##### <a name="mark-text"></a> 3.字符串类型
 
 ##### 1.3.1 CHAR(M)
 
@@ -411,7 +411,7 @@ TIMESTAMP类型有专有的自动更新特性。
 比较：不区分大小写
 ~~~
 
-##### 1.4 NULL值
+##### <a name="mark-null"></a> 1.4 NULL值
 
 `NULL`是一种“无类型”的值。他唱呗称为“无值”、“未知值”、“丢失的值”、“没有上述值”等等。可将NULL值插入表中，也可以冲表中检索他们，测试这个值是否为NULL，但不能对NULL进行算术运算。
 
