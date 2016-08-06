@@ -75,7 +75,7 @@ vim ~/.bash_profile
 #### 三、修改初始密码
 
 
-1.在终端输入 `mysql -uroot -p` 如下图所示输入安装完成时你所拷贝在备忘录上的密码`w+-plq!Wp2g;` 如果成功终端上回出现 Welcome to the MySQL monitor等等词。
+1.在终端输入 `mysql -uroot -p` 如下图所示输入安装完成时你所拷贝在备忘录上的密码`w+-plq!Wp2g;` 如果成功终端上回出现 Welcome to the MySQL monitor等词。
 
 ![](http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E7%9A%84bin%E7%9B%AE%E5%BD%95.png)
 

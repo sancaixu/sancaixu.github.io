@@ -5,9 +5,1110 @@
     <description>Hello，大家好，我叫徐三才，iOS工程师一枚。</description>
     <link>https://www.xusancai.com/</link>
     <atom:link href="https://www.xusancai.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 27 Jul 2016 09:17:05 +0800</pubDate>
-    <lastBuildDate>Wed, 27 Jul 2016 09:17:05 +0800</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 13:39:13 +0800</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 13:39:13 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>MySQL的使用</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;一、创建数据库&lt;/h4&gt;
+
+&lt;p&gt;1、使用&lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW DATABASE&lt;/code&gt;查看数据库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查看数据库
+SHOW DATABASE;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;1、我们用 &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE DATABASE   数据库名;&lt;/code&gt; 来完成创建数据库的工作，如果加上&lt;code class=&quot;highlighter-rouge&quot;&gt;IF NOT EXISTS&lt;/code&gt;表示如果数据库不存在则创建数据库否则不创建。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//创建了一个samp_db的数据库
+CREATE DATABASE samp_db;
+//如果数据库存在
+CREATE DATABASE IF NOT EXISTS samp_db;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2、 这个新创建的数据库并不是当前的数据库，这可从执行下面的查询看出。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT DATABASE();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3、为了使samp_db称为当前数据库，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;USE 数据库的名字;&lt;/code&gt;语句即可&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;USE samp_db;
+SELECT DATABASE();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;4、查询数据库版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT VERSION(); 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;5、查询当前用户&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT USER();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;6、也可以何在一起查询&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT NOW(),USER(),VERSION();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;二、数据类型&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;1.数值类型&lt;/h5&gt;
+
+&lt;p&gt;MySQL支持所有标准SQL数值数据类型。&lt;/p&gt;
+
+&lt;p&gt;这些类型包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类
+型(FLOAT、REAL和DOUBLE PRECISION)。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TINYINT&lt;/code&gt; 小整数值 1字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SMALLINT&lt;/code&gt; 大整数值 2字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MEDIUMINT&lt;/code&gt; 大整数值 3字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INT或INTEGER&lt;/code&gt; 大整数值 4字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BIGINT&lt;/code&gt; 极大整数值&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FLOAT&lt;/code&gt; 单精度 浮点数值 4字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DOUBLE&lt;/code&gt; 双精度 浮点数值 8 字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DECIMAL或者DEC&lt;/code&gt; 小数值 对DECIMAL(M,D) ，如果M&amp;gt;D，为M+2否则为D+2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;2.日期和时间类型&lt;/h5&gt;
+
+&lt;p&gt;表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。&lt;/p&gt;
+
+&lt;p&gt;每个时间类型有一个有效值范围和一个”零”值，当指定不合法的MySQL不能表示的值时使用”零”值。&lt;/p&gt;
+
+&lt;p&gt;TIMESTAMP类型有专有的自动更新特性。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATE&lt;/code&gt; 日期值，格式: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD&lt;/code&gt; 3字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TIME&lt;/code&gt; 日期值或持续时间，格式: &lt;code class=&quot;highlighter-rouge&quot;&gt;HH:MM:SS&lt;/code&gt; 3字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; 年份值，格式: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY&lt;/code&gt; 1字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DATETIME&lt;/code&gt; 混合日期和时间值，格式: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD HH:mm:SS &lt;/code&gt; 8字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TIMESTAMP&lt;/code&gt; 混合日期和时间值，时间戳 格式: &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYYMMDD HHMMSS&lt;/code&gt; 8字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;section-4&quot;&gt;3.字符串类型&lt;/h5&gt;
+
+&lt;p&gt;字符串类型指CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CHAR&lt;/code&gt; 定长字符串，0-255字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;VARCHAR&lt;/code&gt; 变长字符串，0-65535字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TINYBLOB&lt;/code&gt; 不超过255个字符的二进制字符串 ，0-255字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TINYTEXT&lt;/code&gt; 短文本字符串，0-255字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BLOB&lt;/code&gt; 二进制形式的长文本数据，0-65535字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TEXT&lt;/code&gt; 长文本数据，0-65535字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MEDIUMBLOB&lt;/code&gt; 二进制形式的中等长度文本数据，0-16777215字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MEDIUMTEXT&lt;/code&gt; 中等长度文本数据，0-16777215字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LONGBLOB&lt;/code&gt; 二进制形式的极大文本数据，0-4294967295字节&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LONGTEXT&lt;/code&gt; 极大文本数据，0-4294967295字节&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;三、创建表&lt;/h4&gt;
+
+&lt;p&gt;1、我们用 &lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE table_name(column_name column_type);&lt;/code&gt; 语句来玩成创建表的工作&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//创建一个president表
+CREATE TABLE president (
+	last_name VARCHAR(15) NOT NULL,
+	first_name VARCHAR(15) NOT NULL,
+	suffix VARCHAR(5) NULL,
+	city VARCHAR(20) NOT NULL,
+	state VARCHAR(2) NOT NULL,
+	birth DATE NOT NULL,
+	death DATE NULL
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//创建一个学生表
+CREATE TABLE IF NOT EXISTS student  (
+	name VARCHAR(20) NOT NULL,
+	sex ENUM(&#39;F&#39;,&#39;M&#39;) NOT NULL,
+	student_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//创建一个event表
+CREATE TABLE IF NOT EXISTS event (
+   	 date DATE NOT NULL,
+ 	 type ENUM(&#39;T&#39;, &#39;Q&#39;) NOT NULL,
+	 event_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//创建一个score表
+CREATE TABLE IF NOT EXISTS score (
+	 student_id INT UNSIGNED NOT NULL,
+	 event_id INT UNSIGNED NOT NULL,
+	 score INT NOT NULL,
+	 PRIMARY KEY (event_id , student_id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;实例解析:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 表示此列的值不一定要输入，&lt;code class=&quot;highlighter-rouge&quot;&gt;NOT NULL&lt;/code&gt; 表示此列的值必须填入。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AUTO_INCREMENT&lt;/code&gt; 是MySQL中的一个特殊属性。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENGINE&lt;/code&gt; 是表的引擎类型，缺省值为&lt;code class=&quot;highlighter-rouge&quot;&gt;INNODB&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CHARSET&lt;/code&gt; 设置MySQL的字符集&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IF NOT EXISTS&lt;/code&gt; 判读表是否存在&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;PRIMARY KEY&lt;/code&gt; 用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ENUM&lt;/code&gt; 类型非常有用。我们可以用 CHAR(1) 来代替它,但是 ENUM 更明确规定了列可 以取什么值。如果对包括一个 ENUM 列的表发布一条 &lt;code class=&quot;highlighter-rouge&quot;&gt;DESCRIBE tbl_name&lt;/code&gt; 语句,MySQL 将 确切地显示可取的值有哪些。此列还可以定义为 &lt;code class=&quot;highlighter-rouge&quot;&gt;ENUM (‘female’,‘male’)。&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2、使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;DESCRIBE president;&lt;/code&gt; 查看是否如我们所期望的创建了表，在我们忘记了表中的类名，需要知道列的类型、了解列有多宽等的时候很有用。 DESCRIBE可以省写为&lt;code class=&quot;highlighter-rouge&quot;&gt;DESC&lt;/code&gt; 。&lt;code class=&quot;highlighter-rouge&quot;&gt;DESCRIBE tbl_name;&lt;/code&gt;等同与&lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW COLUMNS FROM tbl_name&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;3、使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW TABLES&lt;/code&gt; 用来查看创建的表名。&lt;/p&gt;
+
+&lt;p&gt;4、使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;SHOW DATABASES&lt;/code&gt; 用来查看数据库名。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;四、增加新记录&lt;/h4&gt;
+
+&lt;p&gt;1、我们用 &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO tbl_name VALUES(value1, value2,···);&lt;/code&gt; 语句来玩成创建表的工作。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;可指定所有列的值&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO tbl_name VALUES(value1,value2,·····);&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO student values(&#39;Kyle&#39;,&#39;M&#39;,null);
+INSERT INTO event values(&#39;1999-9-3&#39;,&#39;Q&#39;,null);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;解析：VALUES表示包含中每列的值，并且得按表中列额存放次序给我。如果不能肯定，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;DESCRIBE tbl_name&lt;/code&gt;来查看&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;允许通过指定多个值得列表，利用单个的 &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt;语句将几行插入一个表中&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO tbl_name VALUES(...),(...),...&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO student VALUES(&#39;Abby&#39;,&#39;F&#39;,NULL),(&quot;Kyll&quot;,&#39;M&#39;,NULL);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这比多个INSERT语句的键入工作要少，而且服务器执行的效率也更高。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;也可以给出要赋值的列，然后在列出值，&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO tbl_name (col_name1,col_name,...) VALUES(value1,value2,...);&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO student (name,sex) VALUES(&#39;Stein&#39;,&#39;M&#39;);
+//自MySQL3.22.5版本以来,这种形式的INSERT也允许多个值
+INSERT INTO student (name,sex) VALUES(&#39;Abby&#39;,&#39;F&#39;),(&#39;Kyle&#39;,&#39;M&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在列中未给出名称的列都讲赋予缺省值。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;自MySQL 3.22.10以来，可以用 &lt;code class=&quot;highlighter-rouge&quot;&gt;col_name=value&lt;/code&gt;的形式给出列和值。&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT INTO tbl_name SET col_name1=value1,col_name2=value2,····;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO student name=&#39;kyll&#39;,sex=&#39;F&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在SET子语句中未命名的行都赋予一个缺省值。使用这种形式的&lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt;语句不能插入多行。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;五、查看信息&lt;/h4&gt;
+
+&lt;p&gt;我们用&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;语句检索和显示表中的信息。&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;语句有几个子句，可以更具需要用来检索感兴趣的信息。每个子句都可以简单、可复杂。&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; 语句一般的形式为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	SELECT 要选择的东西 
+	FROM 一个或者多个表 
+	WHERE 数据必须满足的条件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-8&quot;&gt;1、 不指定条件检索&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FROM&lt;/code&gt;字句指定了要从其中检索数据的表时，&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;语句的最“普通”的是检索所有内容。用&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;来表示所有列。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM student;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可以明确的命名希望得到一列或多列，如果只选择学生名，发布下列语句：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT name FROM student;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果不止名字这一列，可用逗号分隔他们，可以按任意次序给出列:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT name, sex FROM student;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-9&quot;&gt;2、 指定检索条件&lt;/h5&gt;
+
+&lt;p&gt;可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;子句给&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;语句增加限制条件。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可查找数值:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM score WHERE score &amp;gt; 95;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可以查找串值。（一般串的比较不区分大小写）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name FROM president WHERE last_name=&#39;ROOSEVELT&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name FROM president WHERE last_name=&#39;ROOSEVELT&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可以查找日期值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name,first_name,birth FROM president WHERE birth &amp;lt; &#39;1750-1-1&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可以搜索组合值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name, birth, state FROM president WHERE birth &amp;lt; &#39;1750-1-1&#39; AND (state=&#39;VA&#39; OR state=&#39;MA&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;WHERE子句中的表达式可使用算术运算符、比较运算符和逻辑运算符&lt;/p&gt;
+
+&lt;p&gt;算术运算符：&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;；
+比较运算符：&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;=&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;!=或者&amp;lt;&amp;gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;=&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;；
+逻辑运算符：&lt;code class=&quot;highlighter-rouge&quot;&gt;AND&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;OR&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;NOT&lt;/code&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;关于 &lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;值是特殊的，因为他代表的是“无值”。不可能以评估两个已知值的相同方式来讲他与已知值进行评估。不能讲NULL与他自身比较，因为不可能知道比较两个未知值得结果&lt;/p&gt;
+
+&lt;p&gt;为了进行NULL值得搜索必须采用特殊的语法不能用 &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt; 或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;!=&lt;/code&gt;来测试等于 &lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 或者不等于&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;，取而代之的是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;IS NULL&lt;/code&gt; 或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;IS NOT NULL&lt;/code&gt; 来测试。&lt;/p&gt;
+
+&lt;p&gt;例如，我们将健在总统的死亡日期表示为 &lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;，那么可按如下语句查找健在的总统&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name FROM president WHERE death IS NULL;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;为了找到具有后缀部分的姓名，可利用&lt;code class=&quot;highlighter-rouge&quot;&gt;IS NOT NULL&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, frist_name, suffix FROM president WHERE suffix IS NOT NULL;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意：在MySQL 3.23 及以后的版本具有一个特殊的比较运算符&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;=&amp;gt;&lt;/code&gt;&lt;/strong&gt; 即使是NULL与NULL的比较他也是可行的，可以将前面的两个查询重写为&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name FROM president WHERE death &amp;lt;=&amp;gt; NULL;
+SELECT last_name, frist_name, suffix FROM president WHERE NOT (suffix &amp;lt;=&amp;gt; NULL);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-10&quot;&gt;3. 对查询结果进行排序&lt;/h5&gt;
+
+&lt;p&gt;当我们对一个表发布一条&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM tbl_name;&lt;/code&gt; 查询，检索出的行与这些行被插入的顺序是相同的。在这种情况下是有规律的，但是当表进行了行的删除和插入的时候，就会发现服务器返回表的行次序被改变了。（删除记录在表中留下了未使用的“空位”，MySQL在以后插入新记录时将会试图对其填补。）为了进行排序，可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt; 子句：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对学生的名字进行排序&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT name FROM president ORDER BY name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt; 子句中，可在列名之后利用&lt;code class=&quot;highlighter-rouge&quot;&gt;ASC&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;DESC&lt;/code&gt; 关键字指定排序是按升序还是降序。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//按降序排列，在不指定ASC和DESC的情况下，缺省值为升序。
+SELECT name FROM president ORDER BY name DESC;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注：如果对可能包含&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;值得列进行排序时，如果是升序排序，&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;值出现在最前面，如果是降序，&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt; 值出现在最后。&lt;/p&gt;
+
+&lt;p&gt;查询结果可在多个列上进行排序，每个列的升序或降序可以互相独立。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name, state FROM president ORDER BY state DESC, last_name ASC;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-11&quot;&gt;5.对查询的结果进行限制&lt;/h5&gt;
+&lt;p&gt;如果一个查询可以返回许多行，但如果只想看其中的几行，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt; 子句，特别是与ORDER BY 子句结合是更是如此。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下面的查询选择了5位出生日期最早的总统&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name,birth FROM president ORDER BY birth LIMIT 5;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;当然也可以使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT num1,num2&lt;/code&gt; 子句进行查询，&lt;strong&gt;num1&lt;/strong&gt;代表的是你希望看到的第一个记录的位置，&lt;strong&gt;num2&lt;/strong&gt;代表的是你希望看到的记录个数。例如：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name,birth FROM president ORDER BY birth LIMIT 10,5;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可有使用&lt;code class=&quot;highlighter-rouge&quot;&gt;RAND()&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt;结合，从president表中随机抽取一个记录：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name FROM president ORDER BY RAND() LIMIT 1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-12&quot;&gt;6.计算并命名输出的值&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;表达式也可以引用表列，例如：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT CONCAT(first_name,&quot; &quot;,last_name),CONCAT(city,&quot;, &quot;,state) FROM president;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;给列名别名&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上面这个查询把名和姓连接起来，中间间隔一个空格，将总统的名形成一个单一的字符串，而且将出生城市和州连接在一起，中间隔一个逗号，形成出生地。这样表达式可能会很长，我们可以利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;AS name&lt;/code&gt; 结构来重新命名标题，或者叫别名。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT CONCAT(first_name,&quot; &quot;,last_name) AS Name,CONCAT(city,&quot;, &quot;,state) As BirthPlace FROM president;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果别名包含空格需用双引号括起来。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT CONCAT(first_name,&quot; &quot;,last_name) AS &quot;President Name&quot;,CONCAT(city,&quot;, &quot;,state) As &quot;Place of Birth&quot; FROM president;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-13&quot;&gt;7.使用日期&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据精确的日期查找&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM event WHERE date = &quot;1999-10-01&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据日期的范围查找&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name,first_name,death FROM president WHERE death &amp;gt;= &quot;1970-01-01&quot; AND death &amp;lt; &quot;1980-01-01&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;YAER()&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH()&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;DAYOFMONTH()&lt;/code&gt;、这样的函数去检索日期的成分。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查找月份为3的日期值，找出3月份出生的总统
+SELECT last_name,frist_name,birth FROM president WHERE MONTH(birth) = 3;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;此查询也可以按月的名称写出：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name, birth FROM president WHERE MONTHNAME(birth) = &quot;March&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;为了更详细也可以详细到天，可组合测试 &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;DAYOFMONTH()&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name, birth FROM president WHERE MONTH(birth) = 3 AND DAYOFMONTH(birth) = 29;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;也可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;CURRENT_DATE&lt;/code&gt;来进行比较&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查询有没有总统是今天生日的。
+SELECT last_name, first_name, birth FROM president WHERE MONTH(birth) = MONTH(CURRENT_DATE) AND DAYOFMONTH(birth) = DAYOFMONTH(CURRENT_DATE);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;求哪位总统活的最长&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT last_name, first_name, birth, death, FLOOR((TO_DAYS(death) - TO_DAYS(birth))/365) AS age FROM president WHERE death IS NOT NULL ORDER BY age DESC LIMIT 5;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;此查询中&lt;code class=&quot;highlighter-rouge&quot;&gt;TO_DAYS()&lt;/code&gt;将出生日期和逝世日期转换为天数，求出差，然后除以365，得出大概年龄。&lt;code class=&quot;highlighter-rouge&quot;&gt;FLOOR()&lt;/code&gt;函数 用于截掉年龄的小数部分，得到一个整数。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;自MySQL 3.22以来，可使用&lt;code class=&quot;highlighter-rouge&quot;&gt;DATE_ADD()&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;DATE_SUB()&lt;/code&gt;从一个日期计算另一个日期。这些函数取一个日期及时间间隔并产生一个新的日期值。例如：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT DATE_ADD(&quot;1970-1-1&quot;, INTERVAL 10 YEAR);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT DATE_SUB(&quot;1970-1-1&quot;, INTERVAL 10 YEAR);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查询一个70年代逝世的总统
+SELECT last_name, first_name, death FROM president WHERE death &amp;gt;= DATE_ADD(&quot;1970-1-1&quot;, INTERVAL 10 YEAR);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//会员更新的查询
+SELECT last_name,first_name, expiration FROM member WHERE expiration &amp;lt; DATE_ADD(CURRENT_DATE, INTERVAL 60 DAY);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//确定不久要来检测，但还没有来诊所的病人
+SELECT last_name,first_name, last_visit FROM patient WHWRE last_visit &amp;lt; DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;like-&quot;&gt;8.模式匹配(LIKE 子句)&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt;运算符是是用来匹配通配符指定模式的文本值，这里通常有两个通配符与&lt;code class=&quot;highlighter-rouge&quot;&gt;LIKE&lt;/code&gt;一起使用&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;百分号（%）代表零个、一个或多个数字或字符。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;下划线（_）代表一个单一的数字或字符，这些符号可以被组合使用&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;语法基本如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//1.匹配以“W” 或者“w”开头的名字的名字
+SELECT name FROM student WHERE name LIKE &quot;W%&quot;;
+//2.匹配任意位置包含“W” 或者“w”的名字
+SELECT name FROM student WHERE name LIKE &quot;%W%&quot;;
+//3.查找第二为“H” 或者“h”的名字
+SELECT name FROM student WHERE name LIKE &quot;_h%&quot;;
+//4.查找以&quot;W&quot;开头,第三位为“H” 或者“h”的名字，且长度至少为三个字符的任意值
+SELECT name FROM student WHERE name LIKE &quot;W_%_%&quot;;
+//5.查找以”r“结尾的任意值
+SELECT name FROM student WHERE name LIKE &quot;%r&quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-14&quot;&gt;9.生成汇总&lt;/h5&gt;
+
+&lt;p&gt;汇总的一种简单的形式是确定在一组值中的那些值是唯一值。利用DISTINCT 关键字来删除结果中的重复行。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//查找出总统出生的各州
+SELECT DISTINCT stats FROM president ORDER BY state;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其他汇总形式涉及计数，可利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;COUTN()&lt;/code&gt;函数。如果使用&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT(*)&lt;/code&gt;，他讲给出查询所选择的行数。如果一个查询无WHERE子句，&lt;code class=&quot;highlighter-rouge&quot;&gt;COUTN(*)&lt;/code&gt;将给出表中的行数。例如：
+查询班上有多少学生&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(*) FROM student;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果查询有&lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;子句，&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT(*)&lt;/code&gt;将给出此子句选择多少行。下面的查询给出目前为止对班级进行了多少次测试：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(*) FROM event WHERE type = &#39;Q&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT(*)&lt;/code&gt;对选中的行进行计数。而&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT(col_name)&lt;/code&gt;只对非NULL值进行计数。下面的查询说明了这些差异：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(*), COUNT(suffix),COUNT(death) FROM president;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;也可以将&lt;code class=&quot;highlighter-rouge&quot;&gt;DISTINCT&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT()&lt;/code&gt;组合对选择结果进行统计：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT COUNT(DISTINCT state) FROM president;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;也可以和&lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;子句一起使用，例如查找有多少男孩和女孩
+~~~
+SELECT COUNT(&lt;em&gt;) FROM student WHERE sex = ‘f’;
+SELECT COUNT(&lt;/em&gt;) FROM student WHERE sex = ‘m’;
+~~~&lt;/p&gt;
+
+&lt;p&gt;上面的子句比较繁琐，MySQL可以利用单个查询对一个列中的不同值进行计数。因此，针对上面的查询，可以简化为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT sex, COUNT(*) FROM student GROUP BY sex;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;对&lt;code class=&quot;highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt;查询出的结果进行排序&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT state, COUNT(*) AS count FROM president GROUP BY state ORDER BY count DESC;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT&lt;/code&gt;可与&lt;code class=&quot;highlighter-rouge&quot;&gt;ORDER BY&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt;组合来查找&lt;code class=&quot;highlighter-rouge&quot;&gt;student&lt;/code&gt;表中4个学生最多的区。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT state , COUNT(*) AS count FROM student GROUP BY state ORDER BY count DESC LIMIT 4;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果不想用&lt;code class=&quot;highlighter-rouge&quot;&gt;LIMIT&lt;/code&gt;子句来限制查询输出，也可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;HAVING&lt;/code&gt;子句。例如查询，一个有两个学生以上的街道：
+~~~
+SELECT state , COUNT(*) AS count FROM president GROUP BY state HAVING count &amp;gt; 1 ODER BY count DESC;
+~~~&lt;/p&gt;
+
+&lt;p&gt;出来&lt;code class=&quot;highlighter-rouge&quot;&gt;COUNT()&lt;/code&gt;外还有许多的汇总函数。如&lt;code class=&quot;highlighter-rouge&quot;&gt;MIN()&lt;/code&gt;	、&lt;code class=&quot;highlighter-rouge&quot;&gt;MAX()&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;SUM()&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;AVG&lt;/code&gt;函数在确定列的最大、最小、总数和平均值时非常有用。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT event_id ,
+		MIN(score) AS minimum,
+		MAX(score) AS maximum,
+		MAX(score) - MIN(score)+1 AS range,
+		SUM(score) AS total,
+		AVG(score) AS average,
+		COUNT(score) AS count,
+		FROM score
+		GROUP BY event_id;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-15&quot;&gt;10.从多表中检索信息&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对特定日期的学分进行选择查询：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT student_id ,date,score, type FROM event, score
+WHERE date = &#39;1999-09-23&#39; 
+AND event.event_id = score.event_id;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* FROM 子句给出了不止一个表名，因为我们要检索的数据不止来自一个表：
+
+* WHERE 子句说明event 和 score表是由每个表中的event_id值得匹配连接起来的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;一般连接中我们应该对每个列都进行限定以便清晰地表示出每个列属于哪个表。查询如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT score.student_id,event_date,score.score,event.type 
+FROM event ,score
+WHERE event.date = &quot;1999-09-23&quot;
+AND event.even_id = score.event_id
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;汇总学生的缺勤情况，查询如下：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT student.student_id, student.name, 
+COUNT(absence.date) as absences
+FROM student ,absence
+WHERE student.student_id = absence.student_id
+GROUP BY sudent.student_id
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LEFT JOIN&lt;/code&gt;的使用，&lt;code class=&quot;highlighter-rouge&quot;&gt;LEFT JOIN&lt;/code&gt;不涉及上述&lt;code class=&quot;highlighter-rouge&quot;&gt;WHERE&lt;/code&gt;子句的学生，得到的是每个学生的输出结果，即使那些在absence表中未给出的学生也都包括在输出中。查询如下：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT s.student_id,s.name,
+COUNT(absence.date) as absences
+FROM student AS s LEFT JOIN absence
+ON student.student_id = absence.student_id
+GROUP BY student.student_id;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;注：此查询使用了表的别名（ s ）&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-16&quot;&gt;六、删除信息&lt;/h4&gt;
+
+&lt;h4 id=&quot;section-17&quot;&gt;七、改变表结构&lt;/h4&gt;
+
+</description>
+        <pubDate>Sun, 31 Jul 2016 08:11:24 +0800</pubDate>
+        <link>https://www.xusancai.com/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/</link>
+        <guid isPermaLink="true">https://www.xusancai.com/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/</guid>
+        
+        <category>MySQL</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>MySQL的数据类型</title>
+        <description>&lt;h4 id=&quot;section&quot;&gt;一、列类型参考&lt;/h4&gt;
+
+&lt;p&gt;MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;1.1数值类型&lt;/h5&gt;
+
+&lt;p&gt;MySQL支持所有标准SQL数值数据类型。&lt;/p&gt;
+
+&lt;p&gt;对于整数类型，如果指定了&lt;code class=&quot;highlighter-rouge&quot;&gt;AUTO_INCREMENT&lt;/code&gt;属性，则必须为&lt;code class=&quot;highlighter-rouge&quot;&gt;PRIMARY KEY&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;UNIQUE&lt;/code&gt;索引。如果将&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;插入 &lt;code class=&quot;highlighter-rouge&quot;&gt;AUTO_INCREMENT&lt;/code&gt; 列将会插入一个大于该列当中当前的最大值。如果指定了&lt;code class=&quot;highlighter-rouge&quot;&gt;UNSIGNED&lt;/code&gt;属性，则相应的整数不允许取负值。&lt;/p&gt;
+
+&lt;p&gt;如果指定了&lt;code class=&quot;highlighter-rouge&quot;&gt;ZEROFILE&lt;/code&gt;属性，则用前导零填充数值类型的值已达到列显示的宽度。&lt;/p&gt;
+
+&lt;h5 id=&quot;tinyint&quot;&gt;1.1.1 TINYINT&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;说明：非常小整数 
+
+存储需求：1字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-128到127，如果为UNSIGNED则为0到255
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;smallint&quot;&gt;1.1.2 SMALLINT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：较小整数 
+
+存储需求：2字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-37268到32767，如果为UNSIGNED则为0到65535
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;mediumint&quot;&gt;1.1.3 MEDIUMINT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：中等整数
+
+存储需求：3字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-8388608到8388607，如果为UNSIGNED则为0到1677215
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;intinteger&quot;&gt;1.1.4 INT或INTEGER&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：标准整数
+
+存储需求：4字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED, ZEROFILL
+
+取值范围：-2147483648到2147483647，如果为 UNSIGNED 则为0到4284867295
+
+缺省值：如果列可为 NULL，则为 NULL ，如果为 NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;bigint&quot;&gt;1.1.5 BIGINT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：大整数
+
+存储需求：8字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED, ZEROFILL
+
+取值范围：-9223372036854775808到9223372036854775807，如果为 UNSIGNED 则为0到18446744073709551615
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;float&quot;&gt;1.1.6 FLOAT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：单精度浮点数
+
+存储需求：4字节
+
+允许属性：ZEROFILL
+
+取值范围：最小非零值为±1.75494351E-38;最大非零值为±3.402823466E+38
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;double&quot;&gt;1.1.7 DOUBLE&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：双精度浮点数
+
+存储需求：8字节
+
+允许属性：ZEROFILL
+
+取值范围：最小非零值为±2.2250738585072014E-308;最大非零值为±1.7976931348623157E+308
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;decimaldec&quot;&gt;1.1.8 DECIMAL或者DEC&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：一个串的浮点数
+
+存储需求：如果M&amp;gt;D，为M+2否则为D+2
+
+允许属性：ZEROFILL
+
+取值范围：最大取值范围与DOUBLE相同
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;2.日期和时间类型&lt;/h5&gt;
+
+&lt;p&gt;表示时间值的日期和时间类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;DATETIME&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;DATE&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;TIMESTAMP&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;TIME&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;每个时间类型有一个有效值范围和一个”零”值，当指定不合法的MySQL不能表示的值时使用”零”值。&lt;/p&gt;
+
+&lt;p&gt;TIMESTAMP类型有专有的自动更新特性。&lt;/p&gt;
+
+&lt;h5 id=&quot;date&quot;&gt;1.2.1 DATE&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：YYYY-MM-DD 格式的日期
+
+存储需求：3字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1000-01-01” 到“9999-12-31”
+
+零值：”0000-00-00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;time&quot;&gt;1.2.2 TIME&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：hh:mm:ss 格式的时间（负值为 -hh:mm:ss）；表示占用的时间，但也可以作为日常的时间
+
+存储需求：3字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“-838:59:59” 到“-838:59:59”
+
+零值：”00:00:00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;year&quot;&gt;1.2.3 YEAR&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：YYYY 格式表示的年份
+
+存储需求：1字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1900” 到“2155”
+
+零值：”0000“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;datetime&quot;&gt;1.2.4 DATETIME&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：YYYY-MM-DD hh:mm:ss 格式表示的日期和时间
+
+存储需求：8字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1000-01-01 00:00:00” 到“9999-12-31 23:59:59”
+
+零值：”0000-00-00 00:00:00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;timestamp&quot;&gt;1.2.5 TIMESTAMP&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：YYYYMMDDhhmmss 格式表示的日期和时间
+
+存储需求：4字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“19700101000000” 到 2037年的某个时刻
+
+缺省值：当前的日期和时间，注意 DESCRIBE 和 SHOW COLLUMNS 报告缺省值为NULL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;section-3&quot;&gt;3.字符串类型&lt;/h5&gt;
+
+&lt;h5 id=&quot;charm&quot;&gt;1.3.1 CHAR(M)&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储进右边补空格。长于M个字符串的存储是剪断为长度是M的串。在检索时去掉后跟的空格。
+
+存储需求：0到M字节
+
+允许属性：BINARY
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为&quot;&quot;
+
+比较：不区分大小写（如果具有BINARY属性，则区分大小写）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;varcharm&quot;&gt;1.3.2  VARCHAR(M)&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储时后跟的空格被去掉。存储时，大于M字符的串剪短为M个字符。
+
+存储需求：0到M个字节
+
+允许属性：BINARY
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为&quot;&quot;
+
+比较：不区分大小写（如果具有BINARY属性，则区分大小写）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;tinyblob&quot;&gt;1.3.3 TINYBLOB&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：小BLOB值
+
+存储需求：值的长度加上用于记录长度的1个字节
+
+允许属性：除通用属性外无其他属性
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为&quot;&quot;
+
+允许长度：0到255
+
+比较：区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;blob&quot;&gt;1.3.4 BLOB&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：常规大小的 BLOB 值
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0到65535
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;mediumblob&quot;&gt;1.3.5 MEDIUMBLOB&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：中等大小的 BLOB 值
+
+存储需求：值的长度加上用于记录长度的3个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-16777215字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;longblob-blob&quot;&gt;1.3.6 LONGBLOB 大BLOB，&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：大BLOB值
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-4294967295字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;tinytext&quot;&gt;1.3.7 TINYTEXT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：短文本字符串
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-255字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：区分大小写
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;text&quot;&gt;1.3.8 TEXT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：常规大小的TEXT值
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-65535字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;mediumtext&quot;&gt;1.3.9 MEDIUMTEXT&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：中等大小的TEXT值
+
+存储需求：值的长度加上用于记录长度的3个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-16777215字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;longtext-0-4294967295&quot;&gt;1.3.10 LONGTEXT` 极大文本数据，0-4294967295字节&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：极大的TEXT值
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-4294967295字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;enum&quot;&gt;1.3.11 ENUM&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：枚举，列值可赋予值列表中的某个成员
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0到255个成员的枚举1个字节，对255到65535个成员的枚举2个字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为第一个枚举值
+  
+比较：不区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;set&quot;&gt;1.3.12 SET&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;说明：集合，列值可赋予值列表中的某个成员
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：1字节（1到8个成员集合），2字节（9-16个成员集合），3字节（17到24个成员集合），4字节（25到32个成员集合）或者8字节（33到64个成员集合）
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”空集
+  
+比较：不区分大小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;null&quot;&gt;1.4 NULL值&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NULL&lt;/code&gt;是一种“无类型”的值。他唱呗称为“无值”、“未知值”、“丢失的值”、“没有上述值”等等。可将NULL值插入表中，也可以冲表中检索他们，测试这个值是否为NULL，但不能对NULL进行算术运算。&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 31 Jul 2016 08:11:24 +0800</pubDate>
+        <link>https://www.xusancai.com/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+        <guid isPermaLink="true">https://www.xusancai.com/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+        
+        <category>MySQL</category>
+        
+        
+      </item>
     
       <item>
         <title>MAC下安装MySQL</title>
@@ -56,7 +1157,7 @@
 
 &lt;h4 id=&quot;section-2&quot;&gt;三、修改初始密码&lt;/h4&gt;
 
-&lt;p&gt;1.在终端输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -uroot -p&lt;/code&gt; 如下图所示输入安装完成时你所拷贝在备忘录上的密码&lt;code class=&quot;highlighter-rouge&quot;&gt;w+-plq!Wp2g;&lt;/code&gt; 如果成功终端上回出现 Welcome to the MySQL monitor等等词。&lt;/p&gt;
+&lt;p&gt;1.在终端输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;mysql -uroot -p&lt;/code&gt; 如下图所示输入安装完成时你所拷贝在备忘录上的密码&lt;code class=&quot;highlighter-rouge&quot;&gt;w+-plq!Wp2g;&lt;/code&gt; 如果成功终端上回出现 Welcome to the MySQL monitor等词。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://images-10054370.cos.myqcloud.com/MYSQL/%E8%BF%9B%E5%85%A5mysql%E7%9A%84bin%E7%9B%AE%E5%BD%95.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 

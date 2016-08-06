@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>MySQL的数据类型</title>
+  <meta name="description" content="一、列类型参考">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MySQL的数据类型">
+  <meta name="twitter:description" content="一、列类型参考">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MySQL的数据类型">
+  <meta property="og:description" content="一、列类型参考">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://www.xusancai.com/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+  <link rel="alternate" type="application/rss+xml" title="好歹是个程序猿" href="https://www.xusancai.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 好歹是个程序猿 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="好歹是个程序猿 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 好歹是个程序猿" class="blog-button">好歹是个程序猿</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Hello，大家好，我叫徐三才，iOS工程师一枚。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/sancaixu" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/sancaixu" title="@sancaixu 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:sancaixu@163.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-31 08:11:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-07-31</time> &#8226; <span class="post-meta__tags tags">MySQL</span>
+    </div>
+    <h1 class="post-title">MySQL的数据类型</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="section">一、列类型参考</h4>
+
+<p>MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。</p>
+
+<h5 id="section-1">1.1数值类型</h5>
+
+<p>MySQL支持所有标准SQL数值数据类型。</p>
+
+<p>对于整数类型，如果指定了<code class="highlighter-rouge">AUTO_INCREMENT</code>属性，则必须为<code class="highlighter-rouge">PRIMARY KEY</code>或者<code class="highlighter-rouge">UNIQUE</code>索引。如果将<code class="highlighter-rouge">NULL</code>插入 <code class="highlighter-rouge">AUTO_INCREMENT</code> 列将会插入一个大于该列当中当前的最大值。如果指定了<code class="highlighter-rouge">UNSIGNED</code>属性，则相应的整数不允许取负值。</p>
+
+<p>如果指定了<code class="highlighter-rouge">ZEROFILE</code>属性，则用前导零填充数值类型的值已达到列显示的宽度。</p>
+
+<h5 id="tinyint">1.1.1 TINYINT</h5>
+
+<pre><code class="language-mysql">说明：非常小整数 
+
+存储需求：1字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-128到127，如果为UNSIGNED则为0到255
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+</code></pre>
+
+<h5 id="smallint">1.1.2 SMALLINT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：较小整数 
+
+存储需求：2字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-37268到32767，如果为UNSIGNED则为0到65535
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="mediumint">1.1.3 MEDIUMINT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：中等整数
+
+存储需求：3字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED,ZEROFILL
+
+取值范围：-8388608到8388607，如果为UNSIGNED则为0到1677215
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="intinteger">1.1.4 INT或INTEGER</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：标准整数
+
+存储需求：4字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED, ZEROFILL
+
+取值范围：-2147483648到2147483647，如果为 UNSIGNED 则为0到4284867295
+
+缺省值：如果列可为 NULL，则为 NULL ，如果为 NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="bigint">1.1.5 BIGINT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：大整数
+
+存储需求：8字节
+
+允许属性：AUTO_INCREMENT, UNSIGNED, ZEROFILL
+
+取值范围：-9223372036854775808到9223372036854775807，如果为 UNSIGNED 则为0到18446744073709551615
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="float">1.1.6 FLOAT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：单精度浮点数
+
+存储需求：4字节
+
+允许属性：ZEROFILL
+
+取值范围：最小非零值为±1.75494351E-38;最大非零值为±3.402823466E+38
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="double">1.1.7 DOUBLE</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：双精度浮点数
+
+存储需求：8字节
+
+允许属性：ZEROFILL
+
+取值范围：最小非零值为±2.2250738585072014E-308;最大非零值为±1.7976931348623157E+308
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="decimaldec">1.1.8 DECIMAL或者DEC</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：一个串的浮点数
+
+存储需求：如果M&gt;D，为M+2否则为D+2
+
+允许属性：ZEROFILL
+
+取值范围：最大取值范围与DOUBLE相同
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为0
+</code></pre>
+</div>
+
+<h5 id="section-2">2.日期和时间类型</h5>
+
+<p>表示时间值的日期和时间类型为<code class="highlighter-rouge">DATETIME</code>、<code class="highlighter-rouge">DATE</code>、<code class="highlighter-rouge">TIMESTAMP</code>、<code class="highlighter-rouge">TIME</code>和<code class="highlighter-rouge">YEAR</code>。</p>
+
+<p>每个时间类型有一个有效值范围和一个”零”值，当指定不合法的MySQL不能表示的值时使用”零”值。</p>
+
+<p>TIMESTAMP类型有专有的自动更新特性。</p>
+
+<h5 id="date">1.2.1 DATE</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY-MM-DD 格式的日期
+
+存储需求：3字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1000-01-01” 到“9999-12-31”
+
+零值：”0000-00-00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+</code></pre>
+</div>
+
+<h5 id="time">1.2.2 TIME</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：hh:mm:ss 格式的时间（负值为 -hh:mm:ss）；表示占用的时间，但也可以作为日常的时间
+
+存储需求：3字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“-838:59:59” 到“-838:59:59”
+
+零值：”00:00:00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+</code></pre>
+</div>
+
+<h5 id="year">1.2.3 YEAR</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY 格式表示的年份
+
+存储需求：1字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1900” 到“2155”
+
+零值：”0000“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+</code></pre>
+</div>
+
+<h5 id="datetime">1.2.4 DATETIME</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY-MM-DD hh:mm:ss 格式表示的日期和时间
+
+存储需求：8字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“1000-01-01 00:00:00” 到“9999-12-31 23:59:59”
+
+零值：”0000-00-00 00:00:00“
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为零值
+</code></pre>
+</div>
+
+<h5 id="timestamp">1.2.5 TIMESTAMP</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYYMMDDhhmmss 格式表示的日期和时间
+
+存储需求：4字节
+
+允许属性：除通用属性外无其他属性
+
+取值范围：“19700101000000” 到 2037年的某个时刻
+
+缺省值：当前的日期和时间，注意 DESCRIBE 和 SHOW COLLUMNS 报告缺省值为NULL
+</code></pre>
+</div>
+
+<h5 id="section-3">3.字符串类型</h5>
+
+<h5 id="charm">1.3.1 CHAR(M)</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储进右边补空格。长于M个字符串的存储是剪断为长度是M的串。在检索时去掉后跟的空格。
+
+存储需求：0到M字节
+
+允许属性：BINARY
+
+缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为""
+
+比较：不区分大小写（如果具有BINARY属性，则区分大小写）
+</code></pre>
+</div>
+
+<h5 id="varcharm">1.3.2  VARCHAR(M)</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储时后跟的空格被去掉。存储时，大于M字符的串剪短为M个字符。
+
+存储需求：0到M个字节
+
+允许属性：BINARY
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为""
+
+比较：不区分大小写（如果具有BINARY属性，则区分大小写）
+</code></pre>
+</div>
+
+<h5 id="tinyblob">1.3.3 TINYBLOB</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：小BLOB值
+
+存储需求：值的长度加上用于记录长度的1个字节
+
+允许属性：除通用属性外无其他属性
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为""
+
+允许长度：0到255
+
+比较：区分大小写
+</code></pre>
+</div>
+
+<h5 id="blob">1.3.4 BLOB</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：常规大小的 BLOB 值
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0到65535
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+</code></pre>
+</div>
+
+<h5 id="mediumblob">1.3.5 MEDIUMBLOB</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：中等大小的 BLOB 值
+
+存储需求：值的长度加上用于记录长度的3个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-16777215字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+</code></pre>
+</div>
+
+<h5 id="longblob-blob">1.3.6 LONGBLOB 大BLOB，</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：大BLOB值
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-4294967295字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+
+比较：区分大小写
+</code></pre>
+</div>
+
+<h5 id="tinytext">1.3.7 TINYTEXT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：短文本字符串
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-255字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：区分大小写
+
+</code></pre>
+</div>
+
+<h5 id="text">1.3.8 TEXT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：常规大小的TEXT值
+
+存储需求：值的长度加上用于记录长度的2个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-65535字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+</code></pre>
+</div>
+
+<h5 id="mediumtext">1.3.9 MEDIUMTEXT</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：中等大小的TEXT值
+
+存储需求：值的长度加上用于记录长度的3个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-16777215字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+</code></pre>
+</div>
+
+<h5 id="longtext-0-4294967295">1.3.10 LONGTEXT` 极大文本数据，0-4294967295字节</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：极大的TEXT值
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0-4294967295字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”
+  
+比较：不区分大小写
+</code></pre>
+</div>
+
+<h5 id="enum">1.3.11 ENUM</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：枚举，列值可赋予值列表中的某个成员
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：0到255个成员的枚举1个字节，对255到65535个成员的枚举2个字节
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为第一个枚举值
+  
+比较：不区分大小写
+</code></pre>
+</div>
+
+<h5 id="set">1.3.12 SET</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：集合，列值可赋予值列表中的某个成员
+
+存储需求：值的长度加上用于记录长度的4个字节
+
+允许属性：除通用属性外无其他属性
+
+允许长度：1字节（1到8个成员集合），2字节（9-16个成员集合），3字节（17到24个成员集合），4字节（25到32个成员集合）或者8字节（33到64个成员集合）
+
+缺省值：如果列可为 NULL，则为 NULL，如果为 NOT NULL 则为“”空集
+  
+比较：不区分大小写
+</code></pre>
+</div>
+
+<h5 id="null">1.4 NULL值</h5>
+
+<p><code class="highlighter-rouge">NULL</code>是一种“无类型”的值。他唱呗称为“无值”、“未知值”、“丢失的值”、“没有上述值”等等。可将NULL值插入表中，也可以冲表中检索他们，测试这个值是否为NULL，但不能对NULL进行算术运算。</p>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/" title="link to MySQL的使用">MySQL的使用</a></h2>
+       <p class="excerpt">一、创建数据库1、使用SHOW DATABASE查看数据库//查看数据库SHOW DATABASE;1、我们用 CREATE DATABASE   数据库名; 来完成创建数据库的工作，如果加上IF NOT EXISTS表示如果数据库不存在则创建数据库否则不创建。//创建了一个samp_db的数据库CREATE DATABASE samp_db;//如果数据库存在CREATE DATABASE IF NOT EXISTS samp_db;2、 这个新创建的数据库并不是当前的数据库，这可从执行...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL-%E5%AE%89%E8%A3%85/" title="link to MAC下安装MySQL">MAC下安装MySQL</a></h2>
+       <p class="excerpt">一、下载安装包MySQL下载地址会看到如下图所示的页面，选择MySQL Community Server双击打开下下来的文件在安装完之后会弹出下图这个框，将框里的内容复制下来，粘贴到记事本上面。打开系统偏好设置，会看到作下角会出现一个MySQL的选项。二、修改配置文件1.打开系统偏好设置，点击MySQL进去启动MySQL,如下图2.如果是下图请点击Start MySQL Server，变成如上图所示3.打开终端 cd ~/usr/local/mysql/bin 查看此目录下是否有mysql...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-26 22:09:24 +0800" class="post-list__meta--date date">2016-07-26</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL-%E5%AE%89%E8%A3%85/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://www.xusancai.com/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/";
+        this.page.identifier = "/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/";
+    };
+
+    var disqus_shortname = 'sancaixu';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-06 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-81174961-1', 'xusancai.com');
+    ga('send', 'pageview');
+</script>
+
+
+    
+  </body>
+
+</html>
