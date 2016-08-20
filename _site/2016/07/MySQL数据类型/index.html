@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>MySQL的数据类型</title>
-  <meta name="description" content="一、列类型参考">
+  <title>MySQL数据类型</title>
+  <meta name="description" content="一、属性">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MySQL的数据类型">
-  <meta name="twitter:description" content="一、列类型参考">
+  <meta name="twitter:title" content="MySQL数据类型">
+  <meta name="twitter:description" content="一、属性">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="MySQL的数据类型">
-  <meta property="og:description" content="一、列类型参考">
+  <meta property="og:title" content="MySQL数据类型">
+  <meta property="og:description" content="一、属性">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -126,25 +126,27 @@
     <div class="post-meta">
       <time datetime="2016-07-31 08:11:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-07-31</time> &#8226; <span class="post-meta__tags tags">MySQL</span>
     </div>
-    <h1 class="post-title">MySQL的数据类型</h1>
+    <h1 class="post-title">MySQL数据类型</h1>
   </header>
 
   <section class="post">
-    <h4 id="section">一、列类型参考</h4>
+    <h4 id="section">一、属性</h4>
 
-<p>MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。</p>
+<h4 id="section-1">二、列类型参考</h4>
 
-<h5 id="section-1">1.1数值类型</h5>
+<p>MySQL有4种数据类型，分别为<a href="#mark-数值类型">数值型</a>，<a href="#mark-text">串类型</a>，<a href="#mark-date">日期和时间类型</a>，<a href="#mark-null">NULL值</a>。</p>
 
-<p>MySQL支持所有标准SQL数值数据类型。</p>
+<h5 id="a-namemark-a-11-"><a name="mark-数值类型"></a> 1.1 数值类型</h5>
+
+<p>MySQL支持所有标准SQL数值数据类型。有<a href="#mark-TINYINT">TINYINT</a>，<a href="#mark-SMALLINT">SMALLINT</a>，<a href="#mark-MEDIUMINT">MEDIUMINT</a>，<a href="#mark-INT">INT或INTEGER</a>，<a href="#mark-BIGINT">BIGINT</a>，<a href="#mark-FLOAT">FLOAT</a>，<a href="#mark-DOUBLE">DOUBLE</a>，<a href="#mark-DECIMAL">DECIMAL或者DEC</a>。</p>
 
 <p>对于整数类型，如果指定了<code class="highlighter-rouge">AUTO_INCREMENT</code>属性，则必须为<code class="highlighter-rouge">PRIMARY KEY</code>或者<code class="highlighter-rouge">UNIQUE</code>索引。如果将<code class="highlighter-rouge">NULL</code>插入 <code class="highlighter-rouge">AUTO_INCREMENT</code> 列将会插入一个大于该列当中当前的最大值。如果指定了<code class="highlighter-rouge">UNSIGNED</code>属性，则相应的整数不允许取负值。</p>
 
 <p>如果指定了<code class="highlighter-rouge">ZEROFILE</code>属性，则用前导零填充数值类型的值已达到列显示的宽度。</p>
 
-<h5 id="tinyint">1.1.1 TINYINT</h5>
+<h5 id="a-namemark-tinyint111-tinyint"><a name="mark-TINYINT">1.1.1 TINYINT</a></h5>
 
-<pre><code class="language-mysql">说明：非常小整数 
+<div class="highlighter-rouge"><pre class="highlight"><code>说明：非常小整数 
 
 存储需求：1字节
 
@@ -154,8 +156,9 @@
 
 缺省值：如果列可为NULL，则为NULL，如果为NOT NULL 则为0
 </code></pre>
+</div>
 
-<h5 id="smallint">1.1.2 SMALLINT</h5>
+<h5 id="a-namemark-smallint112-smallint"><a name="mark-SMALLINT">1.1.2 SMALLINT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：较小整数 
 
@@ -169,7 +172,7 @@
 </code></pre>
 </div>
 
-<h5 id="mediumint">1.1.3 MEDIUMINT</h5>
+<h5 id="a-namemark-mediumint113-mediumint"><a name="mark-MEDIUMINT">1.1.3 MEDIUMINT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：中等整数
 
@@ -183,7 +186,7 @@
 </code></pre>
 </div>
 
-<h5 id="intinteger">1.1.4 INT或INTEGER</h5>
+<h5 id="a-namemark-int114-intinteger"><a name="mark-INT">1.1.4 INT或INTEGER</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：标准整数
 
@@ -197,7 +200,7 @@
 </code></pre>
 </div>
 
-<h5 id="bigint">1.1.5 BIGINT</h5>
+<h5 id="a-namemark-bigint115-bigint"><a name="mark-BIGINT">1.1.5 BIGINT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：大整数
 
@@ -211,7 +214,7 @@
 </code></pre>
 </div>
 
-<h5 id="float">1.1.6 FLOAT</h5>
+<h5 id="a-namemark-float116-float"><a name="mark-FLOAT">1.1.6 FLOAT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：单精度浮点数
 
@@ -225,7 +228,7 @@
 </code></pre>
 </div>
 
-<h5 id="double">1.1.7 DOUBLE</h5>
+<h5 id="a-namemark-double117-double"><a name="mark-DOUBLE">1.1.7 DOUBLE</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：双精度浮点数
 
@@ -239,7 +242,7 @@
 </code></pre>
 </div>
 
-<h5 id="decimaldec">1.1.8 DECIMAL或者DEC</h5>
+<h5 id="a-namemark-decimal118-decimaldec"><a name="mark-DECIMAL">1.1.8 DECIMAL或者DEC</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：一个串的浮点数
 
@@ -253,15 +256,15 @@
 </code></pre>
 </div>
 
-<h5 id="section-2">2.日期和时间类型</h5>
+<h5 id="a-namemark-datea-2"><a name="mark-date"></a> 2.日期和时间类型</h5>
 
-<p>表示时间值的日期和时间类型为<code class="highlighter-rouge">DATETIME</code>、<code class="highlighter-rouge">DATE</code>、<code class="highlighter-rouge">TIMESTAMP</code>、<code class="highlighter-rouge">TIME</code>和<code class="highlighter-rouge">YEAR</code>。</p>
+<p>表示时间值的日期和时间类型为<a href="#mark-DATETIME">DATETIME</a>、<a href="#mark-DATE">DATE</a>、<a href="#mark-TIMESTAMP">TIMESTAMP</a>、<a href="#mark-TIME">TIME</a>和<a href="#mark-YEAR">YEAR</a>。</p>
 
 <p>每个时间类型有一个有效值范围和一个”零”值，当指定不合法的MySQL不能表示的值时使用”零”值。</p>
 
 <p>TIMESTAMP类型有专有的自动更新特性。</p>
 
-<h5 id="date">1.2.1 DATE</h5>
+<h5 id="a-namemark-date121-date"><a name="mark-DATE">1.2.1 DATE</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY-MM-DD 格式的日期
 
@@ -277,7 +280,7 @@
 </code></pre>
 </div>
 
-<h5 id="time">1.2.2 TIME</h5>
+<h5 id="a-namemark-time122-time"><a name="mark-TIME">1.2.2 TIME</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：hh:mm:ss 格式的时间（负值为 -hh:mm:ss）；表示占用的时间，但也可以作为日常的时间
 
@@ -293,7 +296,7 @@
 </code></pre>
 </div>
 
-<h5 id="year">1.2.3 YEAR</h5>
+<h5 id="a-namemark-year123-year"><a name="mark-YEAR">1.2.3 YEAR</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY 格式表示的年份
 
@@ -309,7 +312,7 @@
 </code></pre>
 </div>
 
-<h5 id="datetime">1.2.4 DATETIME</h5>
+<h5 id="a-namemark-datetime124-datetime"><a name="mark-DATETIME">1.2.4 DATETIME</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYY-MM-DD hh:mm:ss 格式表示的日期和时间
 
@@ -325,7 +328,7 @@
 </code></pre>
 </div>
 
-<h5 id="timestamp">1.2.5 TIMESTAMP</h5>
+<h5 id="a-namemark-timestamp125-timestamp"><a name="mark-TIMESTAMP">1.2.5 TIMESTAMP</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：YYYYMMDDhhmmss 格式表示的日期和时间
 
@@ -339,9 +342,11 @@
 </code></pre>
 </div>
 
-<h5 id="section-3">3.字符串类型</h5>
+<h5 id="a-namemark-texta-3"><a name="mark-text"></a> 3.字符串类型</h5>
 
-<h5 id="charm">1.3.1 CHAR(M)</h5>
+<p>字符串类型有：<a href="#mark-CHAR">CHAR</a>，<a href="#mark-VARCHAR">VARCHAR</a>，<a href="#mark-TINYBLOB">TINYBLOB</a>，<a href="#mark-BLOB">BLOB</a>，<a href="#mark-MEDIUMBLOB">MEDIUMBLOB</a>，<a href="#mark-LONGBLOB">LONGBLOB</a>，<a href="#mark-TINYTEXT">TINYTEXT</a>，<a href="#mark-TEXT">TEXT</a>，<a href="#mark-LONGTEXT">LONGTEXT</a>，<a href="#mark-ENUM">ENUM</a>，<a href="#mark-SET">SET</a>。</p>
+
+<h5 id="a-namemark-char131-charm"><a name="mark-CHAR">1.3.1 CHAR(M)</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储进右边补空格。长于M个字符串的存储是剪断为长度是M的串。在检索时去掉后跟的空格。
 
@@ -355,7 +360,7 @@
 </code></pre>
 </div>
 
-<h5 id="varcharm">1.3.2  VARCHAR(M)</h5>
+<h5 id="a-namemark-varchar132--varcharm"><a name="mark-VARCHAR">1.3.2  VARCHAR(M)</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：0到M字节长的定长字符串，M应该为一个0到255之间的证书。短于M个字符的串，存储时后跟的空格被去掉。存储时，大于M字符的串剪短为M个字符。
 
@@ -369,7 +374,7 @@
 </code></pre>
 </div>
 
-<h5 id="tinyblob">1.3.3 TINYBLOB</h5>
+<h5 id="a-namemark-tinyblob133-tinyblob"><a name="mark-TINYBLOB">1.3.3 TINYBLOB</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：小BLOB值
 
@@ -385,7 +390,7 @@
 </code></pre>
 </div>
 
-<h5 id="blob">1.3.4 BLOB</h5>
+<h5 id="a-namemark-blob134-blob"><a name="mark-BLOB">1.3.4 BLOB</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：常规大小的 BLOB 值
 
@@ -401,7 +406,7 @@
 </code></pre>
 </div>
 
-<h5 id="mediumblob">1.3.5 MEDIUMBLOB</h5>
+<h5 id="a-namemark-mediumblob135-mediumblob"><a name="mark-MEDIUMBLOB">1.3.5 MEDIUMBLOB</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：中等大小的 BLOB 值
 
@@ -417,7 +422,7 @@
 </code></pre>
 </div>
 
-<h5 id="longblob-blob">1.3.6 LONGBLOB 大BLOB，</h5>
+<h5 id="a-namemark-longblob136-longblob"><a name="mark-LONGBLOB">1.3.6 LONGBLOB</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：大BLOB值
 
@@ -433,7 +438,7 @@
 </code></pre>
 </div>
 
-<h5 id="tinytext">1.3.7 TINYTEXT</h5>
+<h5 id="a-namemark-tinytext137-tinytext"><a name="mark-TINYTEXT">1.3.7 TINYTEXT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：短文本字符串
 
@@ -450,7 +455,7 @@
 </code></pre>
 </div>
 
-<h5 id="text">1.3.8 TEXT</h5>
+<h5 id="a-namemark-text138-text"><a name="mark-TEXT">1.3.8 TEXT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：常规大小的TEXT值
 
@@ -466,7 +471,7 @@
 </code></pre>
 </div>
 
-<h5 id="mediumtext">1.3.9 MEDIUMTEXT</h5>
+<h5 id="a-namemark-mediumtext139-mediumtext"><a name="mark-MEDIUMTEXT">1.3.9 MEDIUMTEXT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：中等大小的TEXT值
 
@@ -482,7 +487,7 @@
 </code></pre>
 </div>
 
-<h5 id="longtext-0-4294967295">1.3.10 LONGTEXT` 极大文本数据，0-4294967295字节</h5>
+<h5 id="a-namemark-longtext1310-longtext"><a name="mark-LONGTEXT">1.3.10 LONGTEXT</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：极大的TEXT值
 
@@ -498,7 +503,7 @@
 </code></pre>
 </div>
 
-<h5 id="enum">1.3.11 ENUM</h5>
+<h5 id="a-namemark-enum1311-enum"><a name="mark-ENUM">1.3.11 ENUM</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：枚举，列值可赋予值列表中的某个成员
 
@@ -514,7 +519,7 @@
 </code></pre>
 </div>
 
-<h5 id="set">1.3.12 SET</h5>
+<h5 id="a-namemark-set1312-set"><a name="mark-SET">1.3.12 SET</a></h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>说明：集合，列值可赋予值列表中的某个成员
 
@@ -530,7 +535,7 @@
 </code></pre>
 </div>
 
-<h5 id="null">1.4 NULL值</h5>
+<h5 id="a-namemark-nulla-14-null"><a name="mark-null"></a> 1.4 NULL值</h5>
 
 <p><code class="highlighter-rouge">NULL</code>是一种“无类型”的值。他唱呗称为“无值”、“未知值”、“丢失的值”、“没有上述值”等等。可将NULL值插入表中，也可以冲表中检索他们，测试这个值是否为NULL，但不能对NULL进行算术运算。</p>
 
@@ -543,9 +548,9 @@
    
    <div class="read-more-item">
        <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/" title="link to MySQL的使用">MySQL的使用</a></h2>
-       <p class="excerpt">一、创建数据库1、使用SHOW DATABASE查看数据库//查看数据库SHOW DATABASE;1、我们用 CREATE DATABASE   数据库名; 来完成创建数据库的工作，如果加上IF NOT EXISTS表示如果数据库不存在则创建数据库否则不创建。//创建了一个samp_db的数据库CREATE DATABASE samp_db;//如果数据库存在CREATE DATABASE IF NOT EXISTS samp_db;2、 这个新创建的数据库并不是当前的数据库，这可从执行...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E7%9A%84%E8%AF%AD%E6%B3%95/>继续阅读</a></div>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E7%94%A8%E6%B3%95/" title="link to MySQL的使用">MySQL的使用</a></h2>
+       <p class="excerpt">1. MySQL支持的SQL语句2. 创建、删除、选择数据库3. 创建、删除表4. 增加新记录5. 删除或更新现有记录6. 查询信息7. 创建、删除索引和改变表结构一、MySQL支持的SQL语句创建、丢弃和选择数据库： CREATE DATABASE，DROP DATABASE，USE创建、更改和丢弃表和索引： ALTER TABLE，CREATE INDEX，CREATE TABLE，DROP INDEX，DROP TABLE取数据库、表和查询的有关信息：DESCRIBE，EXPLAIN...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E7%94%A8%E6%B3%95/>继续阅读</a></div>
    </div>
    
    
@@ -590,7 +595,7 @@
 
             <section class="footer">
     <footer>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-06 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-20 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
         <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
     </footer>
 </section>

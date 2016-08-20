@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>为Eclipse开启自动提示功能</title>
+  <meta name="description" content="作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="为Eclipse开启自动提示功能">
+  <meta name="twitter:description" content="作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="为Eclipse开启自动提示功能">
+  <meta property="og:description" content="作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://www.xusancai.com/2016/08/%E4%B8%BAEclipse%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/">
+  <link rel="alternate" type="application/rss+xml" title="好歹是个程序猿" href="https://www.xusancai.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 好歹是个程序猿 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="好歹是个程序猿 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 好歹是个程序猿" class="blog-button">好歹是个程序猿</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Hello，大家好，我叫徐三才，iOS工程师一枚。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/sancaixu" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/sancaixu" title="@sancaixu 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:sancaixu@163.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-16 13:21:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-08-16</time> &#8226; <span class="post-meta__tags tags">Eclipse优化</span>
+    </div>
+    <h1 class="post-title">为Eclipse开启自动提示功能</h1>
+  </header>
+
+  <section class="post">
+    <p>作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。</p>
+
+<p>Eclipse代码里面的代码提示功能默认是关闭的，只有输入“.”的时候才会提示功能。最后经过百度，找到了解决办法。</p>
+
+<p>下面说一下如何修改eclipse配置，开启代码自动提示功能。</p>
+
+<h4 id="section">方法一</h4>
+
+<ul>
+  <li>1、 打开 Eclipes-&gt;偏好设置，如图</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap01.png" alt="ap01" /></p>
+
+<ul>
+  <li>2、 选择<code class="highlighter-rouge">Java-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Auto activation triggers for Java</code> 这一栏，因为我的已经做过修改所以里面看到是”.abcd”，没修改过的应该只有一个”.” 。如下图所示，</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap02.png" alt="ap02" /></p>
+
+<p>在这一匡中填入<code class="highlighter-rouge">.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW</code> 就OK了</p>
+
+<ul>
+  <li>3、 选择<code class="highlighter-rouge">JavaScript-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Auto activation triggers for Java</code> 如下图所示，
+<img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap03.png" alt="ap03" /></li>
+</ul>
+
+<p>在这一匡中填入<code class="highlighter-rouge">.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW</code> 就OK了</p>
+
+<ul>
+  <li>4、 选择<code class="highlighter-rouge">Web-&gt;HTML Files-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Prompt when these characters are inserted</code> 如下图所示，</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap04.png" alt="ap04" /></p>
+
+<p>在这一匡中填入<code class="highlighter-rouge">&lt;=.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW</code> 就OK了</p>
+
+<ul>
+  <li>5、 重启Eclipse，试试效果，效果如下：</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap05.png" alt="ap05" /></p>
+
+<p>如果不行，请看方法二</p>
+
+<h4 id="section-1">方法二</h4>
+
+<ul>
+  <li>
+    <p>1、 同方法一 步骤1</p>
+  </li>
+  <li>
+    <p>2、 选择<code class="highlighter-rouge">Java-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Auto activation triggers for Java</code> 这一栏，因为我的已经做过修改所以里面看到是”.abcd”，没修改过的应该只有一个”.” 。如下图所示，</p>
+  </li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap06.png" alt="ap06" /></p>
+
+<p>在这一匡中填入<code class="highlighter-rouge">PJava</code> 就OK了</p>
+
+<ul>
+  <li>3、 选择<code class="highlighter-rouge">JavaScript-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Auto activation triggers for Java</code> 如下图所示，</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap07.png" alt="ap07" /></p>
+
+<p>在这一匡中填入<code class="highlighter-rouge">PJS</code> 就OK了</p>
+
+<ul>
+  <li>4、 选择<code class="highlighter-rouge">Web-&gt;HTML Files-&gt;Editor-&gt;Content Assist</code>，找到 <code class="highlighter-rouge">Auto Activation</code> 中的 <code class="highlighter-rouge">Prompt when these characters are inserted</code> 如下图所示，</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap08.png" alt="ap08" /></p>
+
+<p>在这一匡中填入<code class="highlighter-rouge">PHTML</code> 就OK了</p>
+
+<ul>
+  <li>5、 后面步骤直接上gif图</li>
+</ul>
+
+<p>导出偏好设置文件</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap09.gif" alt="ap09" /></p>
+
+<p>替换文本</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap10.gif" alt="ap10" /></p>
+
+<p>导入偏好设置文件</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap11.gif" alt="ap10" /></p>
+
+<ul>
+  <li>6、 效果如下图</li>
+</ul>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap05.png" alt="ap05" /></p>
+
+<h4 id="section-2">参考资料</h4>
+
+<p><a href="http://wenku.baidu.com/link?url=Q4BVKhL4yMVWcxkPbFk5LcslNqzCr-1eBiVS1mpLdYYNhXAURSEFgs5oA0fZDTfG7pJQjXvubhSL1cA6azQA4epgJemP4ueEHrqyhnPLfO3">配置Eclipse全自动提示</a></p>
+
+<p><a href="http://wenku.baidu.com/link?url=WHcpVs_PVVlayCvsykVgP1j6Phwmve51_pvtyI6kbWmllnadyznsJk-AcvfCYZ3tAsJn5uX896S_mGFDpaAeYZSnewWGAgEbYWT1VQAjEWG">Eclipse的自动提示设置</a></p>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E7%94%A8%E6%B3%95/" title="link to MySQL的使用">MySQL的使用</a></h2>
+       <p class="excerpt">1. MySQL支持的SQL语句2. 创建、删除、选择数据库3. 创建、删除表4. 增加新记录5. 删除或更新现有记录6. 查询信息7. 创建、删除索引和改变表结构一、MySQL支持的SQL语句创建、丢弃和选择数据库： CREATE DATABASE，DROP DATABASE，USE创建、更改和丢弃表和索引： ALTER TABLE，CREATE INDEX，CREATE TABLE，DROP INDEX，DROP TABLE取数据库、表和查询的有关信息：DESCRIBE，EXPLAIN...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E7%94%A8%E6%B3%95/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://www.xusancai.com/2016/08/%E4%B8%BAEclipse%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/";
+        this.page.identifier = "/2016/08/%E4%B8%BAEclipse%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/";
+    };
+
+    var disqus_shortname = 'sancaixu';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-20 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-81174961-1', 'xusancai.com');
+    ga('send', 'pageview');
+</script>
+
+
+    
+  </body>
+
+</html>

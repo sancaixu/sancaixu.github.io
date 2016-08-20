@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>MySQL的语法</title>
+  <meta name="description" content="一、MySQL支持的SQL语句">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MySQL的语法">
+  <meta name="twitter:description" content="一、MySQL支持的SQL语句">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MySQL的语法">
+  <meta property="og:description" content="一、MySQL支持的SQL语句">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://www.xusancai.com/2016/08/MySQL%E8%AF%AD%E6%B3%95/">
+  <link rel="alternate" type="application/rss+xml" title="好歹是个程序猿" href="https://www.xusancai.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 好歹是个程序猿 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="好歹是个程序猿 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 好歹是个程序猿" class="blog-button">好歹是个程序猿</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Hello，大家好，我叫徐三才，iOS工程师一枚。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/sancaixu" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/sancaixu" title="@sancaixu 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:sancaixu@163.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-06 13:11:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-08-06</time> &#8226; <span class="post-meta__tags tags">MySQL笔记</span>
+    </div>
+    <h1 class="post-title">MySQL的语法</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="mysqlsql">一、MySQL支持的SQL语句</h4>
+
+<p>创建、丢弃和选择数据库： <code class="highlighter-rouge">CREATE DATABASE</code>，<code class="highlighter-rouge">DROP DATABASE</code>，<code class="highlighter-rouge">USE</code>。</p>
+
+<p>创建、更改和丢弃表和索引： <code class="highlighter-rouge">ALTER TABLE</code>，<code class="highlighter-rouge">CREATE INDEX</code>，<code class="highlighter-rouge">CREATE TABLE</code>，<code class="highlighter-rouge">DROP INDEX</code>，<code class="highlighter-rouge">DROP TABLE</code>。</p>
+
+<p>取数据库、表和查询的有关信息：<code class="highlighter-rouge">DESCRIBE</code>，<code class="highlighter-rouge">EXPLAIN </code>，<code class="highlighter-rouge">SHOW</code>。</p>
+
+<p>从表中选择信息：<code class="highlighter-rouge">SELECT</code>。</p>
+
+<p>修改表中信息：<code class="highlighter-rouge">DELETE</code>，<code class="highlighter-rouge">INSERT</code>，<code class="highlighter-rouge">LOAD DATA</code>，<code class="highlighter-rouge">OPTIMIZE TABLE</code>，<code class="highlighter-rouge">REPLACE</code>，<code class="highlighter-rouge">UPDATE</code>。</p>
+
+<p>管理语句：<code class="highlighter-rouge">FLUSH</code>，<code class="highlighter-rouge">GRANT</code>，<code class="highlighter-rouge">KILL</code>，<code class="highlighter-rouge">REVOKE</code>。</p>
+
+<p>其他语句：<code class="highlighter-rouge">CREATE FUNCTION</code>，<code class="highlighter-rouge">DROP FUNCTION</code>，<code class="highlighter-rouge">LOCK TABLES</code>，<code class="highlighter-rouge">SET</code>，<code class="highlighter-rouge">UNLOCK TABLES</code>。</p>
+
+<h4 id="section">二、创建、删除和选择数据库</h4>
+
+<p>MySQL 提供了三条数据库级的语句，分别是：<code class="highlighter-rouge">CREATE DATABASE</code> 用于创建数据库， <code class="highlighter-rouge">DROP DATABASE</code> 用于删除数据库，<code class="highlighter-rouge">USE</code> 用于选择缺省数据库。
+##### 2.1 使用 <code class="highlighter-rouge">CREATE DATABASE</code> 创建数据库</p>
+
+<p>创建一个数据库非常简单，只要在 <code class="highlighter-rouge">CREATE DATABASE</code> 后面加上数据库名就OK拉，如下例：创建了一个叫 <strong>samp_db</strong> 的数据库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CREATE DATABASE samp_db;
+</code></pre>
+</div>
+
+<h5 id="drop-database-">2.2 使用 <code class="highlighter-rouge">DROP DATABASE</code> 删除数据库</h5>
+
+<p>删除数据库更创建数据库一样，只要在 <code class="highlighter-rouge">DROP DATABASE</code> 后面加上数据库名就可以啦，如下例：删除了一个叫 <strong>samp_db</strong> 的数据库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DROP DATABASE samp_db;
+</code></pre>
+</div>
+
+<h5 id="use-">2.3 使用 <code class="highlighter-rouge">USE</code> 选择数据库</h5>
+
+<p><code class="highlighter-rouge">USE</code> 语句选择一个数据库，使这个数据库称为当前服务器连接的数据库，用户和上面一样，在 <code class="highlighter-rouge">USE</code> 后面加上数据库名就可以啦，如下例：选择了一个叫 <strong>samp_db</strong>的数据库成为了当前默认的数据库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>USE samp_db;
+</code></pre>
+</div>
+
+<h4 id="section-1">三、创建、删除、索引和更改表</h4>
+
+<h5 id="create-table-">3.1 使用 <code class="highlighter-rouge">CREATE TABLE</code> 创建表</h5>
+
+<p>我们用 <code class="highlighter-rouge">CREATE TABLE table_name(column_name column_type);</code> 语句来玩成创建表的工作，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 创建普通的表
+
+CREATE TABLE samp_table
+(
+	name CAHR(20),
+	age INT NOT NULL,
+	weight INT,
+	sex ENUM('F','M')
+);
+
+-- 使用 `TABLE IF NOT EXISTS` 创建一个不存在的表，
+如果数据库创建，则创建表失败，但不会报错，如果表不存在则创建成功。
+
+CREATE TABLE IF NOT EXISTS samp_table
+(
+	name CAHR(20),
+	age INT NOT NULL,
+	weight INT,
+	sex ENUM('F','M')
+);
+
+-- 使用 `CREATE TEMPORARY TABLE` 创建临时表，
+这些表在会话结束会自动消失，不必费心发布DROP TABLE语句删除这些表
+
+CREATE TEMPORARY TABLE samp_table
+(
+	name CAHR(20),
+	age INT NOT NULL,
+	weight INT,
+	sex ENUM('F','M')
+);
+
+-- 使用 `ENGINE` 和 `CHARSET` 给表设置引擎和字符集
+
+CREATE TABLE IF NOT EXISTS samp_table
+(
+	name CAHR(20),
+	age INT NOT NULL,
+	weight INT,
+	sex ENUM('F','M')
+) ENGINE=INNODB DEFAULT CHARSET=UTF8;
+</code></pre>
+</div>
+
+<h5 id="drop-table-">3.2 使用 <code class="highlighter-rouge">DROP TABLE</code> 删除表</h5>
+<p>删除表比创建表简单很多，只要在 <code class="highlighter-rouge">DROP TABLE</code> 后面加上表名就可以啦，如下例：删除了一个叫 <strong>samp_table</strong> 的表</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DROP TABLE samp_table;
+-- 也可以删除多表
+DROP TABLE tbl1,tbl2,····;
+-- 如果不能肯定这个表是否存在，可在语句中增加 IF EXISTS。
+DROP TABLE IF EXISTS samp_table;
+</code></pre>
+</div>
+
+<h5 id="create-index-">3.3 使用 <code class="highlighter-rouge">CREATE INDEX</code> 创建索引</h5>
+
+<p>在执行 <code class="highlighter-rouge">CREATE TABLE</code> 语句时，可为新表创建索引，也可以用 <code class="highlighter-rouge">CREATE INDEX</code>或者<code class="highlighter-rouge">ALTER TABLE</code> 来为一个已有的表增加索引。<code class="highlighter-rouge">ALTER TABLE</code>最为常用，因为可用它来创建普通索引、<code class="highlighter-rouge">UNIQUE</code> 索引或<code class="highlighter-rouge">PRIMARY KEY</code>索引，如：</p>
+
+<p>使用<code class="highlighter-rouge">ALTER TABLE</code> 创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 其中 tbl_name 是表名，cloumn_list 是指对那些列进行索引，如果索引不止一列组成，个列之间用逗号隔开。索引名 index_name 是可选的，可以不写它。
+
+ALTER TABLE tbl_name ADD INDEX index_name(cloumn_list);
+
+ALTER TABLE tbl_name ADD UNQIUE index_name(cloumn_list);
+
+ALTER TABLE tbl_name ADD PRIMARY KEY index_name(cloumn_list);
+</code></pre>
+</div>
+
+<p>使用<code class="highlighter-rouge">CREATE INDEX</code> 创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- CREATE INDEX 可对表增加普通索引或者UNIQUE索引
+
+CREATE UNIQUE INDEX index_name ON tbl_name(cloumn_list);
+
+CREATE INDEX index_name ON tbl_name(cloumn_list);
+</code></pre>
+</div>
+
+<p>在创建新表时创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CREATE TABLE tbl_name
+(
+	···
+	INDEX index_name(cloumn_list),
+	UNIQUE index_name(cloumn_list),
+	PRIMARY KEY (cloumn_list)
+	···
+
+);
+</code></pre>
+</div>
+
+<h5 id="drop-index--alter-table-">3.4 使用 <code class="highlighter-rouge">DROP INDEX</code> 或者 <code class="highlighter-rouge">ALTER TABLE</code> 删除索引</h5>
+
+<p>可以用 <code class="highlighter-rouge">DROP INDEX</code> 或 <code class="highlighter-rouge">ALTER TABLE</code> 语句来删除索引，跟创建索引类似。如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DROP INDEX index_name ON tbl_name;
+
+ALTER TABLE tbl_name DROP INDEX index_name;
+
+-- 只在删除 PRIMARY KEY 时使用
+
+ALTER TABLE tbl_name DROP PRIMARY KEY;
+</code></pre>
+</div>
+
+<h5 id="alter-table-">3.5 使用 <code class="highlighter-rouge">ALTER TABLE</code> 修改表</h5>
+
+<p><code class="highlighter-rouge">ALTER TABLE</code> 语法如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/* 每个 action 表示对表的一个修改 */
+
+ALTER TABLE tbl_name action,····;
+
+-- 对表重新命名
+
+ALTER TABLE tbl_name RENAME AS new_tbl_name;
+
+-- 更改列类型
+
+ALTER TABLE my_tbl MODIFY name CHAR(15);
+ALTER TABLE my_tbl CHANGE name name CHAR(15);
+
+ALTER TABLE my_tbl MODIFY i MEDIUMINT UNSIGNED;
+ALTER TABLE my_tbl CHANGE i i MEDIUMINT UNSIGNED;
+
+-- CHANGE 可以做 MODIFY不能做的一桩事，CHANGE出了能更改类型外还能更改列名。
+
+ALTER TABLE my_tbl CHANGE i j MEDIUMINT UNSIGNED;
+
+</code></pre>
+</div>
+
+<h4 id="section-2">三、获取数据库和表的有关信息</h4>
+
+<p>使用 <code class="highlighter-rouge">SHOW</code> 语句来获取数据库的表的几个方面的信息，</p>
+
+<ul>
+  <li><code class="highlighter-rouge">SHOW DATABASE</code> 列出服务器上的数据库</li>
+  <li><code class="highlighter-rouge">SHOW TABLES</code> 列出当前数据库中的表</li>
+  <li><code class="highlighter-rouge">SHOW TABLES FROM db_name</code> 列出指定数据库中的表</li>
+  <li><code class="highlighter-rouge">SHOW COLUMNS FROM tbl_name</code> 显示指定表中列的信息</li>
+  <li><code class="highlighter-rouge">SHOW INDEX FROM tbl_name</code> 显示指定表中索引的信息</li>
+  <li><code class="highlighter-rouge">SHOW TABLE STATUS</code> 显示缺省数据库中表的说明信息</li>
+  <li><code class="highlighter-rouge">SHOW TABLE STATUS FROM db_name</code> 显示指定数据库中表的说明信息</li>
+</ul>
+
+<p><code class="highlighter-rouge">DESCRIBE tbl_name</code> 和 <code class="highlighter-rouge">EXPLAIN tbl_name</code> 语句与 <code class="highlighter-rouge">SHOW COLUMNS FROM tbl_name</code> 功能相同。</p>
+
+<h4 id="section-3">四、检索记录</h4>
+
+<h5 id="section-4">4.1 平凡连接</h5>
+<p>##### 4.2 全连接
+##### 4.1 左连接</p>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="link to MySQL数据类型">MySQL数据类型</a></h2>
+       <p class="excerpt">一、列类型参考MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。 1.1 数值类型MySQL支持所有标准SQL数值数据类型。对于整数类型，如果指定了AUTO_INCREMENT属性，则必须为PRIMARY KEY或者UNIQUE索引。如果将NULL插入 AUTO_INCREMENT 列将会插入一个大于该列当中当前的最大值。如果指定了UNSIGNED属性，则相应的整数不允许取负值。如果指定了ZEROFILE属性，则用前导零填充数值类型的值已达到列显示的宽度。1.1....&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://www.xusancai.com/2016/08/MySQL%E8%AF%AD%E6%B3%95/";
+        this.page.identifier = "/2016/08/MySQL%E8%AF%AD%E6%B3%95/";
+    };
+
+    var disqus_shortname = 'sancaixu';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-06 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-81174961-1', 'xusancai.com');
+    ga('send', 'pageview');
+</script>
+
+
+    
+  </body>
+
+</html>

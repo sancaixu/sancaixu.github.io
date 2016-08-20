@@ -1,0 +1,90 @@
+---
+layout: post
+title: 为Eclipse开启自动提示功能
+date: 2016-08-16 14:21:24.000000000 +09:00
+tags: Eclipse优化
+
+---
+
+作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。
+
+Eclipse代码里面的代码提示功能默认是关闭的，只有输入“.”的时候才会提示功能。最后经过百度，找到了解决办法。
+
+下面说一下如何修改eclipse配置，开启代码自动提示功能。
+
+#### 方法一
+
+
+* 1、 打开 Eclipes->偏好设置，如图
+
+![ap01](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap01.png)
+
+* 2、 选择`Java->Editor->Content Assist`，找到 `Auto Activation` 中的 `Auto activation triggers for Java` 这一栏，因为我的已经做过修改所以里面看到是".abcd"，没修改过的应该只有一个"." 。如下图所示，
+
+![ap02](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap02.png)
+
+在这一匡中填入`.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW` 就OK了
+
+* 3、 选择`JavaScript->Editor->Content Assist`，找到 `Auto Activation` 中的 `Auto activation triggers for Java` 如下图所示，
+![ap03](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap03.png)
+
+在这一匡中填入`.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW` 就OK了
+
+* 4、 选择`Web->HTML Files->Editor->Content Assist`，找到 `Auto Activation` 中的 `Prompt when these characters are inserted` 如下图所示，
+
+![ap04](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap04.png)
+
+在这一匡中填入`<=.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW` 就OK了
+
+* 5、 重启Eclipse，试试效果，效果如下：
+
+![ap05](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap05.png)
+
+如果不行，请看方法二
+ 
+#### 方法二
+
+* 1、 同方法一 步骤1
+
+* 2、 选择`Java->Editor->Content Assist`，找到 `Auto Activation` 中的 `Auto activation triggers for Java` 这一栏，因为我的已经做过修改所以里面看到是".abcd"，没修改过的应该只有一个"." 。如下图所示，
+
+![ap06](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap06.png)
+
+在这一匡中填入`PJava` 就OK了
+
+* 3、 选择`JavaScript->Editor->Content Assist`，找到 `Auto Activation` 中的 `Auto activation triggers for Java` 如下图所示，
+
+![ap07](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap07.png)
+
+在这一匡中填入`PJS` 就OK了
+
+* 4、 选择`Web->HTML Files->Editor->Content Assist`，找到 `Auto Activation` 中的 `Prompt when these characters are inserted` 如下图所示，
+
+![ap08](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap08.png)
+
+在这一匡中填入`PHTML` 就OK了
+
+* 5、 后面步骤直接上gif图
+
+导出偏好设置文件
+
+![ap09](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap09.gif)
+
+替换文本
+
+![ap10](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap10.gif)
+
+导入偏好设置文件
+
+![ap10](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap11.gif)
+
+* 6、 效果如下图
+
+![ap05](http://images-10054370.cos.myqcloud.com/Eclipse%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA/ap05.png)
+
+
+#### 参考资料
+
+[配置Eclipse全自动提示](http://wenku.baidu.com/link?url=Q4BVKhL4yMVWcxkPbFk5LcslNqzCr-1eBiVS1mpLdYYNhXAURSEFgs5oA0fZDTfG7pJQjXvubhSL1cA6azQA4epgJemP4ueEHrqyhnPLfO3)
+
+[Eclipse的自动提示设置](http://wenku.baidu.com/link?url=WHcpVs_PVVlayCvsykVgP1j6Phwmve51_pvtyI6kbWmllnadyznsJk-AcvfCYZ3tAsJn5uX896S_mGFDpaAeYZSnewWGAgEbYWT1VQAjEWG)

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>MySQL的使用</title>
+  <meta name="description" content="1. MySQL支持的SQL语句">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MySQL的使用">
+  <meta name="twitter:description" content="1. MySQL支持的SQL语句">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MySQL的使用">
+  <meta property="og:description" content="1. MySQL支持的SQL语句">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="https://www.xusancai.com/2016/07/MySQL%E7%94%A8%E6%B3%95/">
+  <link rel="alternate" type="application/rss+xml" title="好歹是个程序猿" href="https://www.xusancai.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 好歹是个程序猿 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="好歹是个程序猿 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 好歹是个程序猿" class="blog-button">好歹是个程序猿</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">让人迷茫的原因只有一个——那就是本该拼搏的年纪，却想得太多，做得太少！</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Hello，大家好，我叫徐三才，iOS工程师一枚。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                
+                  <li class="navigation__item"><a href="https://github.com/sancaixu" target="_blank" title="My Projects">Projects</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/sancaixu" title="@sancaixu 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+  <!-- Email -->
+  <li class="navigation__item">
+    <a href="mailto:sancaixu@163.com" title="Contact me">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-red"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-07-31 08:11:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-07-31</time> &#8226; <span class="post-meta__tags tags">MySQL</span>
+    </div>
+    <h1 class="post-title">MySQL的使用</h1>
+  </header>
+
+  <section class="post">
+    <h4 id="mysqlsqlmark-sql"><a href="#mark-SQL语句">1. MySQL支持的SQL语句</a></h4>
+
+<h4 id="mark-createdatabase"><a href="#mark-createDatabase">2. 创建、删除、选择数据库</a></h4>
+
+<h4 id="mark-createtable"><a href="#mark-createTable">3. 创建、删除表</a></h4>
+
+<h4 id="mark-insertdata"><a href="#mark-insertData">4. 增加新记录</a></h4>
+
+<h4 id="mark-deletedata"><a href="#mark-deleteData">5. 删除或更新现有记录</a></h4>
+
+<h4 id="mark-selectdata"><a href="#mark-selectData">6. 查询信息</a></h4>
+
+<h4 id="mark-altertable"><a href="#mark-alterTable">7. 创建、删除索引和改变表结构</a></h4>
+
+<h4 id="a-namemark-sqlamysqlsql"><a name="mark-SQL语句"></a>一、MySQL支持的SQL语句</h4>
+
+<p>创建、丢弃和选择数据库： <code class="highlighter-rouge">CREATE DATABASE</code>，<code class="highlighter-rouge">DROP DATABASE</code>，<code class="highlighter-rouge">USE</code></p>
+
+<p>创建、更改和丢弃表和索引： <code class="highlighter-rouge">ALTER TABLE</code>，<code class="highlighter-rouge">CREATE INDEX</code>，<code class="highlighter-rouge">CREATE TABLE</code>，<code class="highlighter-rouge">DROP INDEX</code>，<code class="highlighter-rouge">DROP TABLE</code></p>
+
+<p>取数据库、表和查询的有关信息：<code class="highlighter-rouge">DESCRIBE</code>，<code class="highlighter-rouge">EXPLAIN </code>，<code class="highlighter-rouge">SHOW</code></p>
+
+<p>从表中选择信息：<code class="highlighter-rouge">SELECT</code></p>
+
+<p>修改表中信息：<code class="highlighter-rouge">DELETE</code>，<code class="highlighter-rouge">INSERT</code>，<code class="highlighter-rouge">LOAD DATA</code>，<code class="highlighter-rouge">OPTIMIZE TABLE</code>，<code class="highlighter-rouge">REPLACE</code>，<code class="highlighter-rouge">UPDATE</code></p>
+
+<p>管理语句：<code class="highlighter-rouge">FLUSH</code>，<code class="highlighter-rouge">GRANT</code>，<code class="highlighter-rouge">KILL</code>，<code class="highlighter-rouge">REVOKE</code></p>
+
+<p>其他语句：<code class="highlighter-rouge">CREATE FUNCTION</code>，<code class="highlighter-rouge">DROP FUNCTION</code>，<code class="highlighter-rouge">LOCK TABLES</code>，<code class="highlighter-rouge">SET</code>，<code class="highlighter-rouge">UNLOCK TABLES</code></p>
+
+<h4 id="a-namemark-createdatabasea"><a name="mark-createDatabase"></a>二、创建、删除、选择数据库</h4>
+
+<h5 id="show-databases">2.1 使用<code class="highlighter-rouge">SHOW DATABASES</code>查看数据库</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查看数据库
+SHOW DATABASES;
+</code></pre>
+</div>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE1.png" alt="图1" /></p>
+
+<h5 id="create-database-">2.2 使用 <code class="highlighter-rouge">CREATE DATABASE</code> 创建数据库</h5>
+
+<p>创建一个数据库非常简单，只要在 <code class="highlighter-rouge">CREATE DATABASE</code> 后面加上数据库名就OK拉，如下例：创建了一个叫 <strong>samp_db</strong> 的数据库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 创建数据库
+CREATE DATABASE samp_db;
+</code></pre>
+</div>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE2.png" alt="图2" /></p>
+
+<h5 id="use-">2.3 使用 <code class="highlighter-rouge">USE</code> 选择数据库</h5>
+
+<p>首先使用 <code class="highlighter-rouge">SELECT DATABASE()</code> 语句查看是不是当前数据库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查看当前数据库
+SELECT DATABASE();
+</code></pre>
+</div>
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE5.png" alt="图5" /></p>
+
+<p>如上图所示，当前的数据库为NULL，我们可以使用 <code class="highlighter-rouge">USE</code> 语句选择一个数据库，使这个数据库称为当前服务器连接的数据库，用户和上面一样，在 <code class="highlighter-rouge">USE</code> 后面加上数据库名就可以啦，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>USE samp_db;
+</code></pre>
+</div>
+
+<p>再次执行 <code class="highlighter-rouge">SELECT DATABASE()</code> 会看到 <strong>samp_db</strong>已经成为了当前选择的数据库
+<img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE6.png" alt="图6" /></p>
+
+<h5 id="drop-database-">2.4 使用 <code class="highlighter-rouge">DROP DATABASE</code> 删除数据库</h5>
+
+<p>删除数据库更创建数据库一样，只要在 <code class="highlighter-rouge">DROP DATABASE</code> 后面加上数据库名就可以啦，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 删除数据库
+DROP DATABASE samp_db;
+</code></pre>
+</div>
+
+<h4 id="a-namemark-createtablea"><a name="mark-createTable"></a>三、创建、删除表</h4>
+
+<h5 id="create-table-">3.1 使用 <code class="highlighter-rouge">CREATE TABLE</code> 创建表</h5>
+
+<p>我们用 <code class="highlighter-rouge">CREATE TABLE table_name(column_name column_type);</code> 语句来完成创建表的工作，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 创建普通的表
+
+CREATE TABLE samp_table();
+
+-- 使用 `IF NOT EXISTS` 创建一个不存在的表，
+如果数据库创建，则创建表失败，但不会报错，如果表不存在则创建成功。
+
+CREATE TABLE IF NOT EXISTS samp_table();
+
+-- 使用 `CREATE TEMPORARY TABLE` 创建临时表，
+这些表在会话结束会自动消失，不必费心发布DROP TABLE语句删除这些表
+
+CREATE TEMPORARY TABLE samp_table();
+
+</code></pre>
+</div>
+
+<p><mark>为了后面的演示我创建了三个表，学生资料表，学生成绩表，学生每次考试的事件表，学生的出勤表</mark></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>--创建一个学生资料表
+
+CREATE TABLE IF NOT EXISTS student (
+    name VARCHAR(20) NOT NULL,
+    sex ENUM('F', 'M') NOT NULL,
+    city VARCHAR(10) NOT NULL,
+    address VARCHAR(20) NOT NULL,
+    birth DATE NOT NULL,
+    phone INT NULL,
+    student_id INT UNSIGNED NOT NULL PRIMARY KEY
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+-- 创建一个成绩表
+
+CREATE TABLE IF NOT EXISTS score (
+    student_id INT UNSIGNED NOT NULL,
+    event_id INT UNSIGNED NOT NULL,
+    score INT NOT NULL,
+    PRIMARY KEY (event_id , student_id)
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+-- 创建一个事件表，记录考试是测试，还是测验
+
+CREATE TABLE IF NOT EXISTS event (
+    event_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    type ENUM('T', 'Q') NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+-- 创建一个出勤表
+
+CREATE TABLE IF NOT EXISTS attendance (
+    date DATE NOT NULL,
+    student_id INT UNSIGNED NOT NULL,
+    attendance_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
+</code></pre>
+</div>
+
+<p>使用 <code class="highlighter-rouge">SHOW COLUMNS FROM student;</code> 查看如图所示</p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE7.png" alt="图7" /></p>
+
+<p>实例解析:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">NULL</code> 表示此列的值不一定要输入，<code class="highlighter-rouge">NOT NULL</code> 表示此列的值必须填入。</li>
+  <li><code class="highlighter-rouge">AUTO_INCREMENT</code> 是MySQL中的一个特殊属性。</li>
+  <li><code class="highlighter-rouge">ENGINE</code> 是表的引擎类型，缺省值为<code class="highlighter-rouge">INNODB</code></li>
+  <li><code class="highlighter-rouge">CHARSET</code> 设置MySQL的字符集</li>
+  <li><code class="highlighter-rouge">IF NOT EXISTS</code> 判读表是否存在</li>
+  <li><code class="highlighter-rouge">PRIMARY KEY</code> 用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。</li>
+  <li><code class="highlighter-rouge">ENUM</code> 类型非常有用。我们可以用 CHAR(1) 来代替它,但是 ENUM 更明确规定了列可 以取什么值。如果对包括一个 ENUM 列的表发布一条 <code class="highlighter-rouge">DESCRIBE tbl_name</code> 语句,MySQL 将 确切地显示可取的值有哪些。此列还可以定义为 <code class="highlighter-rouge">ENUM (‘female’,‘male’)</code>。</li>
+</ul>
+
+<h5 id="drop-table-">3.2 使用 <code class="highlighter-rouge">DROP TABLE</code> 删除表</h5>
+
+<p>删除表比创建表简单很多，只要在 <code class="highlighter-rouge">DROP TABLE</code> 后面加上表名就可以啦，如下例：删除了一个叫 <strong>samp_table</strong> 的表</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 删除表
+DROP TABLE samp_table;
+
+-- 删除多表
+DROP TABLE tbl1,tbl2,····;
+DROP TABLES tbl1,tbl2,····;
+
+-- 如果不能肯定这个表是否存在，可在语句中增加 IF EXISTS。
+DROP TABLE IF EXISTS samp_table;
+</code></pre>
+</div>
+
+<h4 id="a-namemark-insertdataa"><a name="mark-insertData"></a>四、增加新记录</h4>
+
+<h5 id="section">4.1 给所有的列赋值</h5>
+
+<p><code class="highlighter-rouge">INSERT INTO tbl_name VALUES(value1,value2,·····);</code> 这种方法插入的数据必须与你创建表时参数的顺序一致。 例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>INSERT INTO student VALUES('李明','F','北京','昌平区，云趣园二区','1990-01-15','18210106666',1);
+INSERT INTO score VALUES(1,1,95);
+INSERT INTO event VALUES(1,'2011-05-06','T');
+INSERT INTO attendance VALUES('2011-04-03',1,1);
+</code></pre>
+</div>
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE8.png" alt="图8" /></p>
+
+<p><strong>如果参数不一致会报错</strong></p>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE9.png" alt="图9" /></p>
+
+<h5 id="section-1">4.2 一次性给表插入多条数据</h5>
+
+<p>MySQL 允许通过指定多个值得列表，利用单个的 <code class="highlighter-rouge">INSERT</code>语句将几行插入一个表中，
+这比多个INSERT语句的键入工作要少，而且服务器执行的效率也更高。</p>
+
+<p><code class="highlighter-rouge">INSERT INTO tbl_name VALUES(...),(...),...</code></p>
+
+<p>例如:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>INSERT INTO student VALUES
+('刘能','F','湖南','长沙，福田区','1992-03-20','18210104444',2),
+('刘小红','M','广州','深圳，南湖区','1991-10-15','18210105555',3),
+('欧阳燕','M','北京','海淀区，永泰庄','1990-07-07','18210103333',4);
+
+INSERT INTO score VALUES
+(2,2,95),
+(3,3,50),
+(4,4,65);
+INSERT INTO event VALUES
+(2,'2011-05-06','T'),
+(3,'2011-05-06','T'),
+(4,'2011-05-06','T');
+INSERT INTO attendance VALUES
+('2011-04-07',2,2),
+('2011-04-07',1,3),
+('2011-04-20',3,4),
+('2011-04-10',4,5);
+</code></pre>
+</div>
+
+<h5 id="section-2">4.3 也可以给出要赋值的列，然后在列出值，</h5>
+
+<p><code class="highlighter-rouge">INSERT INTO tbl_name
+ (col_name1,col_name,...) 
+ VALUES(value1,value2,...);</code></p>
+
+<p>例如:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>INSERT INTO student (name,sex) VALUES('曾小宝','F');
+//自MySQL3.22.5版本以来,这种形式的INSERT也允许多个值
+INSERT INTO student (name,sex) VALUES('Abby','F'),('Kyle','M');
+</code></pre>
+</div>
+
+<p>在列中未给出名称的列都讲赋予缺省值。</p>
+
+<h5 id="mysql-32210--colnamevalue-">4.4 自MySQL 3.22.10 以来，可以用 <code class="highlighter-rouge">col_name=value</code> 的形式给出列和值。</h5>
+
+<p><code class="highlighter-rouge">INSERT INTO tbl_name SET col_name1=value1,col_name2=value2,····;</code></p>
+
+<p>例如:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>INSERT INTO student name='kyll',sex='F';
+</code></pre>
+</div>
+
+<h4 id="a-namemark-deletedataa"><a name="mark-deleteData"></a>五、删除或更新现有记录</h4>
+
+<p>我们使用 <code class="highlighter-rouge">DELETE</code> 和 <code class="highlighter-rouge">UPDATE</code> 对表进行删除和更新的操作。</p>
+
+<h5 id="delete-">5.1 使用 DELETE 删除数据</h5>
+
+<p><code class="highlighter-rouge">DELETE</code> 语句有如下格式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE FROM tbl_name WHERE 要删除的记录
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">WHERE</code> 子句指定哪些记录应该删除。他是可选的，但是如果不选的话，将会删除所有记录。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 清楚缺勤表中的所有内容
+DELETE FROM attendance;
+-- 删除时间为2011-04-07那天的缺勤记录
+DELETE FROM attendance WHERE date='2011-04-07';
+-- 删除时间为2011-04-07且student_id等于2的缺勤记录
+DELETE FROM attendance WHERE date='2011-04-07' AND student_id=2;
+</code></pre>
+</div>
+
+<h5 id="update-">5.2 使用 UPDATE 修改现有记录</h5>
+
+<p><code class="highlighter-rouge">UPDATE</code> 语句有如下格式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>UPDATE tbl_name SET 要更改的列
+WHERE 要更新的记录
+</code></pre>
+</div>
+
+<p>这里的 <code class="highlighter-rouge">WHERE</code> 子句也更 <code class="highlighter-rouge">DELETE</code> 语句一样，是可选的，如果不指定的话，表中的每个记录都被更新。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 将所有学生的名字改为小明
+UPDATE student SET name="小明";
+-- 对李明的电话进行修改
+UPDATE student SET phone = '17077777777' WHERE name = '李明';
+-- 对多个列进行修改
+UPDATE student SET phone = '17077778888', name = '小明' WHERE name = '李明';
+
+</code></pre>
+</div>
+
+<h4 id="a-namemark-selectdataa"><a name="mark-selectData"></a>六、查询信息</h4>
+
+<p>我们用<code class="highlighter-rouge">SELECT</code>语句检索和显示表中的信息。<code class="highlighter-rouge">SELECT</code>语句有几个子句，可以更具需要用来检索感兴趣的信息。每个子句都可以简单、可复杂。<code class="highlighter-rouge">SELECT</code> 语句一般的形式为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	SELECT 要查询的东西 
+	FROM 指定检索数据的表，表可以是一个或多个，多个表间用逗号隔开 
+	WHERE 数据必须满足的条件
+</code></pre>
+</div>
+
+<h5 id="section-3">6.1 查询所有数据</h5>
+
+<p>如果 <code class="highlighter-rouge">WHERE</code> 子句不指定条件，则查询所有数据，用<code class="highlighter-rouge">*</code>表示所有列，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询所有学生的数据
+SELECT * FROM student;
+</code></pre>
+</div>
+
+<p>也可以明确的命名希望得到一列或多列，如果字需要查看学生的姓名，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询所有学生的名字
+SELECT name FROM student;
+</code></pre>
+</div>
+
+<p>如果想查询学生名和学生的电话号码，只需将列名用逗号分开就会，如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询所有学生的名字和电话号码
+SELECT name,phone FROM student;
+</code></pre>
+</div>
+
+<h5 id="where-">6.2 使用 WHERE 指定条件限定检索结果</h5>
+
+<h5 id="section-4">6.2.1 查找数值</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查找成绩大于95分的人
+SELECT * FROM score WHERE score &gt; 95
+</code></pre>
+</div>
+<p>##### 6.2.2 查找串值（一般串的比较不区分大小写）</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name FROM student WHERE name='小明';
+
+SELECT name FROM student WHERE name='欧阳燕';
+</code></pre>
+</div>
+
+<h5 id="section-5">6.2.3 也可以查找日期值</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查找1991年以后出生的学生
+SELECT name,birth FROM student WHERE birth &gt; '1991-1-1';
+</code></pre>
+</div>
+
+<h5 id="section-6">6.2.4 也可以搜索组合值</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name, birth, state FROM president WHERE birth &gt; '1991-1-1' AND (city='北京' OR city='湖南');
+</code></pre>
+</div>
+
+<h5 id="null-">6.2.5 关于 NULL 值</h5>
+
+<p><code class="highlighter-rouge">NULL</code>值是特殊的，因为他代表的是“无值”。不可能以评估两个已知值的相同方式来讲他与已知值进行评估。不能讲NULL与他自身比较，因为不可能知道比较两个未知值得结果</p>
+
+<p>为了进行NULL值得搜索必须采用特殊的语法不能用 <code class="highlighter-rouge">=</code> 或者 <code class="highlighter-rouge">!=</code>来测试等于 <code class="highlighter-rouge">NULL</code> 或者不等于<code class="highlighter-rouge">NULL</code>，取而代之的是使用<code class="highlighter-rouge">IS NULL</code> 或者 <code class="highlighter-rouge">IS NOT NULL</code> 来测试。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询没有添加手机号码的学生
+SELECT name, phone FROM student WHERE phone IS NULL;
+-- 查询添加了手机号码的学生
+SELECT name, phone FROM student WHERE phone IS NOT NULL;
+</code></pre>
+</div>
+
+<p><mark>注意：</mark>在MySQL 3.23 及以后的版本具有一个特殊的比较运算符<strong><code class="highlighter-rouge">&lt;=&gt;</code></strong> 即使是NULL与NULL的比较他也是可行的，可以将前面的两个查询重写为</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询没有添加手机号码的学生
+SELECT name, phone FROM student WHERE phone &lt;=&gt; NULL;
+-- 查询添加了手机号码的学生
+SELECT name, phone FROM student WHERE NOT (phone &lt;=&gt; NULL);
+</code></pre>
+</div>
+
+<h5 id="order-by-">6.2.6 使用 ORDER BY 对查询结果进行排序</h5>
+
+<p>当我们对一个表发布一条 <code class="highlighter-rouge">SELECT * FROM tbl_name;</code> 查询，检索出的行与这些行被插入的顺序是相同的。在这种情况下是有规律的，但是当表进行了行的删除和插入的时候，就会发现服务器返回表的行次序被改变了。（删除记录在表中留下了未使用的“空位”，MySQL在以后插入新记录时将会试图对其填补。）为了进行排序，可使用<code class="highlighter-rouge">ORDER BY</code> 子句：</p>
+
+<p>1、 对学生的名字进行排序</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name FROM student ORDER BY name;
+</code></pre>
+</div>
+
+<p>2、 使用 <code class="highlighter-rouge">ASC</code> 或者 <code class="highlighter-rouge">DESC</code> 关键字指定排序是升序还是降序。</p>
+
+<p><mark>注：</mark>如果对可能包含 <code class="highlighter-rouge">NULL</code> 值得列进行排序时，如果是升序排序，<code class="highlighter-rouge">NULL</code> 值出现在最前面，如果是降序， <code class="highlighter-rouge">NULL</code> 值出现在最后。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 按降序排列，在不指定ASC和DESC的情况下，缺省值为升序。
+SELECT name FROM president ORDER BY name DESC;
+
+-- 查询结果可在多个列上进行排序，每个列的升序或降序可以互相独立。
+SELECT name, birth FROM student ORDER BY name DESC, birth ASC;
+</code></pre>
+</div>
+
+<h5 id="limit-">6.2.7 使用 LIMIT 对查询的结果进行限制</h5>
+
+<p>如果一个查询可以返回许多行，但如果只想看其中的几行，可以使用<code class="highlighter-rouge">LIMIT</code> 子句，特别是与ORDER BY 子句结合是更是如此。</p>
+
+<p>1、下面的查询选择了前五个年龄最大的学生</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name,birth FROM student ORDER BY birth LIMIT 5;
+</code></pre>
+</div>
+
+<p>2、 当然也可以使用 <code class="highlighter-rouge">LIMIT num1,num2</code> 子句进行查询，<strong>num1</strong>代表的是你希望看到的第一个记录的位置，<strong>num2</strong>代表的是你希望看到的记录个数。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name,birth FROM student ORDER BY birth LIMIT 2,3;
+</code></pre>
+</div>
+
+<p>3、 也可有使用<code class="highlighter-rouge">RAND()</code>与<code class="highlighter-rouge">LIMIT</code>结合，从president表中随机抽取一个记录：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT name FROM student ORDER BY RAND() LIMIT 1;
+</code></pre>
+</div>
+
+<h5 id="section-7">6.2.8 计算并命名输出的列值</h5>
+
+<p>1、 使用表达式也可以引用表列，例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT CONCAT("姓名：",name," 出生日期: ",birth) FROM student;
+</code></pre>
+</div>
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%20%E5%9B%BE10.png" alt="图10" /></p>
+
+<p>2、 给列名名别名</p>
+
+<p>上面这个查询把名和姓连接起来，中间间隔一个空格，将总统的名形成一个单一的字符串，而且将出生城市和州连接在一起，中间隔一个逗号，形成出生地。这样表达式可能会很长，我们可以利用 <code class="highlighter-rouge">AS name</code> 结构来重新命名标题，或者叫别名。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT CONCAT("姓名：",name," ","出生日期: ",birth) AS 姓名和出生日期 FROM student;
+-- 如果别名包含空格需用双引号括起来。
+SELECT CONCAT("姓名：",name," ","出生日期: ",birth) AS "姓名 生日" FROM student;
+</code></pre>
+</div>
+
+<p><img src="http://images-10054370.cos.myqcloud.com/MYSQL/MySQL%E8%AF%AD%E6%B3%95/%E5%9B%BE11.png" alt="图11" /></p>
+
+<h5 id="section-8">6.2.9 使用日期</h5>
+
+<p>1、根据精确的日期查找</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询出生日期为1990-1-15学生的资料
+SELECT * FROM student WHERE birth = "1990-1-15";
+</code></pre>
+</div>
+
+<p>2、 根据日期的范围查找</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询出生日期在90年到93年之间学生的资料
+SELECT * FROM student WHERE birth &gt;= "1990-01-01" AND birth &lt; "1992-12-31";
+</code></pre>
+</div>
+
+<p>3、 也可以使用 <code class="highlighter-rouge">YAER()</code>、<code class="highlighter-rouge">MONTH()</code>、<code class="highlighter-rouge">DAYOFMONTH()</code>这样的函数去检索日期的成分。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查找月份为3的日期值，找出3月份出生的学生
+SELECT * FROM student WHERE MONTH(birth) = 3;
+
+-- 上面这个查询也可以按月的名称写出：
+SELECT * FROM student WHERE MONTHNAME(birth) = "March";
+</code></pre>
+</div>
+
+<p>为了更详细也可以详细到天，可组合测试 <code class="highlighter-rouge">MONTH()</code>和<code class="highlighter-rouge">DAYOFMONTH()</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT * FROM student WHERE MONTH(birth) = 1 AND DAYOFMONTH(birth) = 15;
+</code></pre>
+</div>
+
+<p>4、 也可以用<code class="highlighter-rouge">CURRENT_DATE</code>来进行比较</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询有没有学生是今天生日的。
+SELECT * FROM student WHERE MONTH(birth) = MONTH(CURRENT_DATE) AND DAYOFMONTH(birth) = DAYOFMONTH(CURRENT_DATE);
+</code></pre>
+</div>
+
+<p>6、 自MySQL 3.22以来，可使用<code class="highlighter-rouge">DATE_ADD()</code>或者<code class="highlighter-rouge">DATE_SUB()</code>从一个日期计算另一个日期。这些函数取一个日期及时间间隔并产生一个新的日期值。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 当前时间加10年
+SELECT DATE_ADD("1970-1-1", INTERVAL 10 YEAR);
+-- 当前时间减10年
+SELECT DATE_SUB("1970-1-1", INTERVAL 10 YEAR);
+</code></pre>
+</div>
+
+<h5 id="like-">6.2.10 使用 LIKE 进行模式匹配</h5>
+
+<p><code class="highlighter-rouge">LIKE</code>运算符是是用来匹配通配符指定模式的文本值，这里通常有两个通配符与<code class="highlighter-rouge">LIKE</code>一起使用</p>
+
+<ul>
+  <li>
+    <p>百分号（%）代表零个、一个或多个数字或字符。</p>
+  </li>
+  <li>
+    <p>下划线（_）代表一个单一的数字或字符，这些符号可以被组合使用</p>
+  </li>
+</ul>
+
+<p>语法基本如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//1.匹配以“W” 或者“w”开头的名字的名字
+SELECT name FROM student WHERE name LIKE "W%";
+//2.匹配任意位置包含“W” 或者“w”的名字
+SELECT name FROM student WHERE name LIKE "%W%";
+//3.查找第二为“H” 或者“h”的名字
+SELECT name FROM student WHERE name LIKE "_h%";
+//4.查找以"W"开头,第三位为“H” 或者“h”的名字，且长度至少为三个字符的任意值
+SELECT name FROM student WHERE name LIKE "W_%_%";
+//5.查找以”r“结尾的任意值
+SELECT name FROM student WHERE name LIKE "%r";
+</code></pre>
+</div>
+
+<h5 id="section-9">6.2.11 统计</h5>
+
+<p>1、 使用 <code class="highlighter-rouge">DISTINCT</code> 关键字删除结果中重复行</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查找出学生的出生地
+SELECT DISTINCT city FROM student ORDER BY city;
+</code></pre>
+</div>
+<p>2、 使用 <code class="highlighter-rouge">COUNT()</code> 函数进行计数</p>
+
+<p>如使用 <code class="highlighter-rouge">COUNT(*)</code>，他将给出查询所选择的行数。如果一个查询无WHERE子句，<code class="highlighter-rouge">COUTN(*)</code>将给出表中的行数。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 查询班上有多少学生
+SELECT COUNT(*) FROM student;
+</code></pre>
+</div>
+
+<p>如果查询有<code class="highlighter-rouge">WHERE</code>子句，<code class="highlighter-rouge">COUNT(*)</code> 将给出此子句选择多少行。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 目前为止班上进行了多少次测试
+SELECT COUNT(*) FROM event WHERE type = 'Q';
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">COUNT(*)</code> 对选中的行进行计数。而 <code class="highlighter-rouge">COUNT(col_name)</code> 只对非NULL值进行计数。下面的查询说明了这些差异：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT COUNT(*), COUNT(address),COUNT(phone) FROM student;
+</code></pre>
+</div>
+
+<p>也可以将 <code class="highlighter-rouge">DISTINCT</code> 和 <code class="highlighter-rouge">COUNT()</code> 组合对选择结果进行统计：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT COUNT(DISTINCT city) FROM student;
+</code></pre>
+</div>
+
+<p>也可以和 <code class="highlighter-rouge">WHERE</code> 子句一起使用，例如查找有多少男孩和女孩</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT COUNT(*) FROM student WHERE sex = 'f';
+SELECT COUNT(*) FROM student WHERE sex = 'm';
+</code></pre>
+</div>
+
+<p>上面的子句比较繁琐，MySQL可以利用单个查询对一个列中的不同值进行计数。因此，针对上面的查询，可以简化为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT sex, COUNT(*) FROM student GROUP BY sex;
+</code></pre>
+</div>
+
+<p>使用 <code class="highlighter-rouge">GROUP BY</code> 对查询出的结果进行排序</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT city, COUNT(*) AS count FROM student GROUP BY city ORDER BY count DESC;
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">COUNT</code> 可与 <code class="highlighter-rouge">ORDER BY</code> 和 <code class="highlighter-rouge">LIMIT</code> 组合来查找 <code class="highlighter-rouge">student</code>表中4个学生最多的省份。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT city , COUNT(*) AS count FROM student GROUP BY city ORDER BY count DESC LIMIT 4;
+</code></pre>
+</div>
+
+<p>如果不想用 <code class="highlighter-rouge">LIMIT</code> 子句来限制查询输出，也可以使用 <code class="highlighter-rouge">HAVING</code> 子句。例如查询，班上有两个以上的同学在一个省份的结果：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT city , COUNT(*) AS count FROM student GROUP BY city HAVING count &gt; 1 ODER BY count DESC;
+</code></pre>
+</div>
+
+<p>除了 <code class="highlighter-rouge">COUNT()</code> 外还有许多的汇总函数。如 <code class="highlighter-rouge">MIN()</code>	、<code class="highlighter-rouge">MAX()</code>、<code class="highlighter-rouge">SUM()</code>、<code class="highlighter-rouge">AVG</code> 函数在确定列的最大、最小、总数和平均值时非常有用。例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT event_id ,
+MIN(score) AS minimum,
+MAX(score) AS maximum,
+MAX(score) - MIN(score)+1 AS range,
+SUM(score) AS total,
+AVG(score) AS average,
+COUNT(score) AS count,
+FROM score
+GROUP BY event_id;
+</code></pre>
+</div>
+
+<h5 id="section-10">6.2.12 从多表中检索信息</h5>
+
+<p>1、 对特定日期的学分进行选择查询：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT student_id ,date,score, type FROM event, score
+WHERE date = '1999-09-23' 
+AND event.event_id = score.event_id;
+</code></pre>
+</div>
+
+<p><mark>注：</mark></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* FROM 子句给出了不止一个表名，因为我们要检索的数据不止来自一个表：
+
+* WHERE 子句说明event 和 score表是由每个表中的event_id值得匹配连接起来的。
+</code></pre>
+</div>
+
+<p>一般连接中我们应该对每个列都进行限定以便清晰地表示出每个列属于哪个表。查询如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT score.student_id,event_date,score.score,event.type 
+FROM event ,score
+WHERE event.date = "1999-09-23"
+AND event.even_id = score.event_id
+</code></pre>
+</div>
+
+<p>2、 汇总学生的缺勤情况，查询如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT student.student_id, student.name, 
+COUNT(attendance.date) AS absence
+FROM student , attendance
+WHERE student.student_id = absence.student_id
+GROUP BY sudent.student_id
+</code></pre>
+</div>
+
+<p>3、 <code class="highlighter-rouge">LEFT JOIN</code> 的使用，<code class="highlighter-rouge">LEFT JOIN</code> 不涉及上述 <code class="highlighter-rouge">WHERE</code> 子句的学生，得到的是每个学生的输出结果，即使那些在absence表中未给出的学生也都包括在输出中。查询如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT s.student_id,s.name,
+COUNT(absence.date) as absences
+FROM student AS s LEFT JOIN absence
+ON student.student_id = absence.student_id
+GROUP BY student.student_id;
+</code></pre>
+</div>
+
+<h4 id="a-namemark-altertablea"><a name="mark-alterTable"></a>七、创建、删除索引和改变表结构</h4>
+
+<h5 id="section-11">7.1  创建索引</h5>
+
+<p>在执行 <code class="highlighter-rouge">CREATE TABLE</code> 语句时，可为新表创建索引，也可以用 <code class="highlighter-rouge">CREATE INDEX</code>或者<code class="highlighter-rouge">ALTER TABLE</code> 来为一个已有的表增加索引。<code class="highlighter-rouge">ALTER TABLE</code>最为常用，因为可用它来创建普通索引、<code class="highlighter-rouge">UNIQUE</code> 索引或<code class="highlighter-rouge">PRIMARY KEY</code>索引，如：</p>
+
+<p>1、 使用<code class="highlighter-rouge">ALTER TABLE</code> 创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 其中 tbl_name 是表名，cloumn_list 是指对那些列进行索引，如果索引不止一列组成，个列之间用逗号隔开。索引名 index_name 是可选的，可以不写它。
+
+ALTER TABLE tbl_name ADD INDEX index_name(cloumn_list);
+
+ALTER TABLE tbl_name ADD UNQIUE index_name(cloumn_list);
+
+ALTER TABLE tbl_name ADD PRIMARY KEY index_name(cloumn_list);
+</code></pre>
+</div>
+
+<p>2、 使用<code class="highlighter-rouge">CREATE INDEX</code> 创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- CREATE INDEX 可对表增加普通索引或者UNIQUE索引
+
+CREATE UNIQUE INDEX index_name ON tbl_name(cloumn_list);
+
+CREATE INDEX index_name ON tbl_name(cloumn_list);
+</code></pre>
+</div>
+
+<p>在创建新表时创建索引</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CREATE TABLE tbl_name
+(
+	···
+	INDEX index_name(cloumn_list),
+	UNIQUE index_name(cloumn_list),
+	PRIMARY KEY (cloumn_list)
+	···
+
+);
+</code></pre>
+</div>
+
+<h5 id="drop-index--alter-table-">7.2 使用 <code class="highlighter-rouge">DROP INDEX</code> 或者 <code class="highlighter-rouge">ALTER TABLE</code> 删除索引</h5>
+
+<p>可以用 <code class="highlighter-rouge">DROP INDEX</code> 或 <code class="highlighter-rouge">ALTER TABLE</code> 语句来删除索引，跟创建索引类似。如下例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DROP INDEX index_name ON tbl_name;
+
+ALTER TABLE tbl_name DROP INDEX index_name;
+
+-- 只在删除 PRIMARY KEY 时使用
+
+ALTER TABLE tbl_name DROP PRIMARY KEY;
+</code></pre>
+</div>
+
+<h5 id="alter-table-">7.3 使用 <code class="highlighter-rouge">ALTER TABLE</code> 修改表</h5>
+
+<p><code class="highlighter-rouge">ALTER TABLE</code> 语法如下：</p>
+
+<p>每个 action 表示对表的一个修改</p>
+
+<p><code class="highlighter-rouge">ALTER TABLE tbl_name action,····;</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- 对表重新命名
+ALTER TABLE tbl_name RENAME AS new_tbl_name;
+
+-- 更改列类型
+ALTER TABLE my_tbl MODIFY name CHAR(15);
+ALTER TABLE my_tbl CHANGE name name CHAR(15);
+
+ALTER TABLE my_tbl MODIFY i MEDIUMINT UNSIGNED;
+ALTER TABLE my_tbl CHANGE i i MEDIUMINT UNSIGNED;
+
+-- CHANGE 可以做 MODIFY不能做的一桩事，CHANGE出了能更改类型外还能更改列名。
+ALTER TABLE my_tbl CHANGE i j MEDIUMINT UNSIGNED;
+
+</code></pre>
+</div>
+
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">最近的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/08/%E4%B8%BAEclipse%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/" title="link to 为Eclipse开启自动提示功能">为Eclipse开启自动提示功能</a></h2>
+       <p class="excerpt">作为一名iOS开发工程师，习惯了Xcode的的自动提示功能，在使用Eclipse编写Java程序的时候非常的别扭。Eclipse代码里面的代码提示功能默认是关闭的，只有输入“.”的时候才会提示功能。最后经过百度，找到了解决办法。下面说一下如何修改eclipse配置，开启代码自动提示功能。方法一  1、 打开 Eclipes-&gt;偏好设置，如图  2、 选择Java-&gt;Editor-&gt;Content Assist，找到 Auto Activation 中的 Auto acti...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-08-16 13:21:24 +0800" class="post-list__meta--date date">2016-08-16</time> &#8226; <span class="post-list__meta--tags tags">Eclipse优化</span><a class="btn-border-small" href=/2016/08/%E4%B8%BAEclipse%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD/>继续阅读</a></div>
+   </div>
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="link to MySQL数据类型">MySQL数据类型</a></h2>
+       <p class="excerpt">一、属性二、列类型参考MySQL有4种数据类型，分别为数值型，串类型，日期和时间类型，NULL值。 1.1 数值类型MySQL支持所有标准SQL数值数据类型。有TINYINT，SMALLINT，MEDIUMINT，INT或INTEGER，BIGINT，FLOAT，DOUBLE，DECIMAL或者DEC。对于整数类型，如果指定了AUTO_INCREMENT属性，则必须为PRIMARY KEY或者UNIQUE索引。如果将NULL插入 AUTO_INCREMENT 列将会插入一个大于该列当中当前...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-07-31 08:11:24 +0800" class="post-list__meta--date date">2016-07-31</time> &#8226; <span class="post-list__meta--tags tags">MySQL</span><a class="btn-border-small" href=/2016/07/MySQL%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<section class="post-comments">
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://www.xusancai.com/2016/07/MySQL%E7%94%A8%E6%B3%95/";
+        this.page.identifier = "/2016/07/MySQL%E7%94%A8%E6%B3%95/";
+    };
+
+    var disqus_shortname = 'sancaixu';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+  
+  
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2016-08-20 生成,感谢 <a href="https://github.com/onevcat/vno-jekyll">onevcat</a>提供的主题</span>
+        <span class="footer__copyright">本站由 <a href="https://www.xusancai.com">@xusancai</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2016</span>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-81174961-1', 'xusancai.com');
+    ga('send', 'pageview');
+</script>
+
+
+    
+  </body>
+
+</html>
